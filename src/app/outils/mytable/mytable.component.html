@@ -1,0 +1,34 @@
+<table class="table table-striped">
+  <thead>
+    <!--titres du tableau-->
+    <tr>
+      <th scope="col" *ngFor="let key of datakeys; let i = index" (click)="sort(key,i)">
+        <i *ngIf="clickedkey[i] == 'asc'"  class="fas fa-sort-amount-up-alt"></i>
+        <i *ngIf="clickedkey[i] == 'desc'"  class="fas fa-sort-amount-up"></i>
+        <i *ngIf="clickedkey[i] == undefined" class="fas fa-arrows-alt-v"></i>
+        {{key}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--contenu du tableau-->
+    <tr *ngFor="let item of dataviewed" >
+      <td *ngFor="let k of datakeys" >
+        {{ item[k]}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" (click)="filterdata(numpage-1)">السابق</a></li>
+    <li *ngFor="let p of numerospagesarray"
+         class="page-item" [ngClass]="{'active' : p == numpage}" >
+       <a class="page-link" (click)="filterdata(p)" >{{p}}</a>
+  </li>
+    <li class="page-item"><a class="page-link" (click)="filterdata(numpage+1)">التالي</a></li>
+  </ul>
+</nav>

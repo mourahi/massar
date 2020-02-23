@@ -1,0 +1,26 @@
+<div *ngIf="!chargementOk"> Chargement en cours ...</div>
+<div *ngIf="chargementOk">
+      <div [style.margin-right]="hidemenu ? '0px' : '270px'">
+        <div id="myheader" >
+        <a (click)="hidemenu = !hidemenu" > <i class="fas fa-bars itembar"></i></a>
+        <a> <i class="fa fa-home itembar"></i></a>
+        <a class="itembar"> المؤسسة التعليمية <i class="fas fa-cogs"></i></a>
+        <app-tatbikati ></app-tatbikati>
+        <app-mydropdown [mylistdata]="listannees"></app-mydropdown>
+
+        <app-mydropdown [mylistdata]="listlang" style="float: left;margin-left: 6px;"></app-mydropdown>
+        <app-myuser style="float: left;margin-left: 6px;" ></app-myuser>
+
+        </div>
+        <div style="margin:5px;margin-right:15px; margin-left:15px">
+          <router-outlet></router-outlet>
+        </div>
+
+        </div>
+        <div id="mymenu" *ngIf="!hidemenu" >
+          <div id="logo"><img  src="assets/img/logo_SGS.png"></div>
+          <app-mydropdownhtml></app-mydropdownhtml>
+
+        </div>
+        <app-myspinner></app-myspinner>
+      </div>

@@ -1,0 +1,18 @@
+
+.myicon{
+  position: absolute;
+  top:4px;
+  left: 4px;
+  margin-right:10px;
+  opacity: 0.3;
+}
+.card:hover .myicon{
+  font-size: 6em;
+}
+.fa-arrow-circle-left{
+  cursor: pointer;
+}
+.card-footer{
+  cursor: pointer;
+  padding: 5px;
+}

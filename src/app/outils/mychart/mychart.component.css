@@ -1,0 +1,14 @@
+.mychart{
+  position: relative;
+  text-align:center;
+}
+.positiontitle{
+  color: #4db53c;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.mychart:hover .positiontitle{
+  font-size: 1.5rem;
+}

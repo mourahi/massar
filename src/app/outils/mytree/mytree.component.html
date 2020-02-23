@@ -1,0 +1,27 @@
+<ul class="mytree">
+  <li *ngFor="let item of data; let i = index" style="position: relative;">
+    <div *ngIf="item.name != ''">
+        <i *ngIf="item.icon ==''"  class="fa fa-edit"></i>
+        <i *ngIf="item.icon !=''"  [ngClass]="'fa ' + item.icon"></i>
+
+        <a *ngIf="item.extension"  (click)="showsubmenu(i,item.extension)" [ngClass]="{'active' : sho == i}">
+        {{item.name}}
+        </a>
+        <a *ngIf="!item.extension" [routerLink]="item.path" (click)="showsubmenu(i,item.extension)" [ngClass]="{'active' : sho == i}">
+          {{item.name}}
+          </a>
+
+        <i *ngIf=" sho != i && item.extension"  class="fa fa-angle-left fright"></i>
+        <i *ngIf=" sho == i && item.extension "  class="fa fa-angle-down fright"></i>
+    <ul *ngIf="item.extension && sho == i">
+      <li *ngFor="let subitem of item.extension; let j = index"
+      class="bgactive" [routerLink]="subitem.path" >
+        <i *ngIf="subitem.icon ==''"  class="fa fa-edit"></i>
+        <i *ngIf="subitem.icon != ''"  [ngClass]="'fa ' + subitem.icon"></i>
+      <a (click)="clicksubmenu(j)"> {{subitem.name}} </a>
+      </li>
+    </ul>
+    </div>
+  </li>
+</ul>
+

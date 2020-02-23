@@ -1,0 +1,65 @@
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" *ngFor="let key of keystoshow; let i = index"
+       (click)="sort(key,i)" >
+       <span *ngIf="key != 'addcheck' && datakeys[key] != 'hide'
+       && key !='addlink' " >
+        <i *ngIf="clickedkey[i] == 'asc'"  class="fas fa-sort-amount-up-alt"></i>
+        <i *ngIf="clickedkey[i] == 'desc'"  class="fas fa-sort-amount-up"></i>
+        <i *ngIf="clickedkey[i] == undefined" class="fas fa-arrows-alt-v"></i>
+        <span *ngIf = "key == 'addconcat' "> {{newKeysnames['addconcat'].name}}</span>
+        <span *ngIf = "datakeys[key]['input'] != undefined "> {{ datakeys[key]['input'] }}</span>
+        <span *ngIf = "datakeys[key]['input'] == undefined && key !=='addconcat' "> {{datakeys[key]}}</span>
+      </span>
+      <span *ngIf="key == 'addcheck'" >
+        <input type="checkbox" id="chAll" (change)="checkall($event.target.checked)">
+      </span>
+      <span *ngIf="key == 'addcheck'" >{{datakeys[key].name}}</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- affichage valeur -->
+    <tr *ngFor="let item of dataviewed" >
+      <td *ngFor="let k of keystoshow" [ngSwitch]="true">
+        <span *ngIf="k != 'hide'" >
+        <span *ngSwitchCase="datakeys[k]['input'] != undefined" >
+          <input type="text" [value]="item[k]" (change)="inputchange($event,item,k)" >
+        </span>
+        <span *ngSwitchCase="k =='addcheck'" >
+          <input type="checkbox" (change)="item[k] = !item[k];checkone($event.target.checked)"
+            [checked]="item[k]" >
+       </span>
+        <span *ngSwitchCase="k == 'addconcat'" >
+          <span>{{item[newKeysnames[k].concat[0]] + ' ' + item[newKeysnames[k].concat[1]]}}</span>
+        </span>
+        <span *ngSwitchCase="k == 'addlink'" >
+          <i class="fas fa-info-circle mr-1"></i>
+          <button type="button" class="btn btn-link" [routerLink]="['/'+ datakeys[k].path, item.n ]" > {{datakeys[k].name}}</button>
+        </span>
+        <span *ngSwitchDefault>{{item[k]}} </span>
+
+      </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row" *ngIf="fin > 0" >
+<div class="col-8">(من {{ debut + 1 }} إلى {{ debut + dataviewed.length}}) / {{ mydata.length}}
+</div>
+
+<nav class="col-4" >
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" (click)="filterdata(numpage-1)">السابق</a></li>
+    <li *ngFor="let p of numerospagesarray"
+         class="page-item" [ngClass]="{'active' : p == numpage}" >
+       <a class="page-link" (click)="filterdata(p)" >{{p}}</a>
+  </li>
+    <li class="page-item"><a class="page-link" (click)="filterdata(numpage+1)">التالي</a></li>
+  </ul>
+</nav>
+</div>
+

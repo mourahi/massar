@@ -1,0 +1,20 @@
+.table > thead:first-child > tr > th {
+  border-color:#c9c9c9;
+  border-top-color: rgb(201, 201, 201);
+  color:#767676;
+  background-color:#ecf0f5;
+  background-image: linear-gradient(#ecf0f5,#fefefe);
+}
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+  background-color:  #f9f9f9;
+}
+.table td, .table th {
+  padding: .5rem;
+}
+button, input {
+  text-align: center;
+  width: 80px;
+}
+.table{
+  width: 90%;
+}

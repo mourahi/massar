@@ -1,0 +1,110 @@
+<div class="card">
+  <div class="card-body"  [ngClass] = "{'show': choixSelect == 0, 'hide': choixSelect !=0}">
+    <div class="row">
+      <div class="col-4">
+        <label for="myselect">نوع التعليم : </label>
+        <select class="form-control"  id='typeEnseignement' (change)="settFiltreActive($event.target)" >
+          <option *ngFor="let item of typeEnseignement"  >{{item}}</option>
+        </select>
+      </div>
+      <div class="col-4">
+        <label for="myselect">السلك : </label>
+        <select class="form-control" id='cycle' (change)="settFiltreActive($event.target)" >
+          <option *ngFor="let item of cycle"  >{{item}}</option>
+        </select>
+      </div>
+
+    <div class="mybtn col-4">
+      <button  class="btn-primary" style="float: right;height: 35px;margin-top: 28px;"
+      (click)="btnclick('save')"> حفظ <i class="fa fa-save" ></i></button>
+    </div>
+    </div>
+  </div>
+  <div class="card-body"  [ngClass] = "{'show': choixSelect == 1, 'hide': choixSelect !=1}">
+<div class="row">
+  <div class="col-6">
+    <label for="myselect">نوع التعليم : </label>
+    <select class="form-control"  id='typeEnseignement' (change)="settFiltreActive($event.target)" >
+      <option *ngFor="let item of typeEnseignement"  >{{item}}</option>
+    </select>
+  </div>
+  <div class="col-6">
+    <label for="myselect">السلك : </label>
+    <select class="form-control" id='cycle' (change)="settFiltreActive($event.target)" >
+      <option *ngFor="let item of cycle"  >{{item}}</option>
+    </select>
+  </div><br>
+  <div class="col-6">
+    <label for="myselect">المستوى : </label>
+    <select class="form-control" id="niveau" (change)="settFiltreActive($event.target)"  >
+      <option *ngFor="let n of listniveaux"  >{{n.niveau}}</option>
+    </select>
+  </div>
+  <div class="col-6">
+    <label for="myselect">القسم : </label>
+    <select class="form-control" id='classe' (change)="settFiltreActive($event.target)" >
+      <option value="*">*</option>
+      <option *ngFor="let c of listnumerosclasses" >{{c.numero}}</option>
+    </select>
+  </div>
+  </div>
+<div class="mybtn">
+  <button  class="btn-primary" (click)="btnclick('find')"> البحث <i class="fa fa-search" ></i></button>
+<app-mydropdown [mylistdata]="mylist" [format]="'طباعة لائحة التلاميذ'"></app-mydropdown>
+</div>
+  </div>
+  <div class="card-body"  [ngClass] = "{'show': choixSelect == 2, 'hide': choixSelect !=2}">
+  <div class="row">
+    <div class="col-6">
+      <label for="myselect">نوع التعليم : </label>
+      <select class="form-control"  id='typeEnseignement' (change)="settFiltreActive($event.target)" >
+        <option *ngFor="let item of typeEnseignement"  >{{item}}</option>
+      </select>
+    </div>
+    <div class="col-6">
+      <label for="myselect">السلك : </label>
+      <select class="form-control" id='cycle' (change)="settFiltreActive($event.target)" >
+        <option *ngFor="let item of cycle"  >{{item}}</option>
+      </select>
+    </div><br>
+    <div class="col-6">
+      <label for="myselect">المستوى : </label>
+      <select class="form-control" id="niveau" (change)="settFiltreActiveForDistribu($event.target)"  >
+        <option *ngFor="let n of listniveaux"  >{{n.niveau}}</option>
+      </select>
+    </div>
+    </div>
+  </div>
+  <div class="card-body"  [ngClass] = "{'show': choixSelect == 3, 'hide': choixSelect !=3}">
+    <div class="row">
+      <div class="col-6">
+        <label for="myselect">نوع التعليم : </label>
+        <select class="form-control"  id='typeEnseignement' (change)="settFiltreActive($event.target)" >
+          <option *ngFor="let item of typeEnseignement"  >{{item}}</option>
+        </select>
+      </div>
+      <div class="col-6">
+        <label for="myselect">السلك : </label>
+        <select class="form-control" id='cycle' (change)="settFiltreActive($event.target)" >
+          <option *ngFor="let item of cycle"  >{{item}}</option>
+        </select>
+      </div><br>
+      <div class="col-6">
+        <label for="myselect">المستوى : </label>
+        <select class="form-control" id="niveau" (change)="settFiltreActive($event.target)"  >
+          <option *ngFor="let n of listniveaux"  >{{n.niveau}}</option>
+        </select>
+      </div>
+      <div class="col-6">
+        <label for="myselect">القسم : </label>
+        <select class="form-control" id='classe' (change)="settFiltreActive($event.target)" >
+          <option value="*">*</option>
+          <option *ngFor="let c of listnumerosclasses" >{{c.numero}}</option>
+        </select>
+      </div>
+      </div>
+    <div class="mybtn">
+      <button  class="btn-primary" (click)="btnclick('find')"> البحث <i class="fa fa-search" ></i></button>
+    </div>
+      </div>
+</div>

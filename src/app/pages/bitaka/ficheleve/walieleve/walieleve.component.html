@@ -1,0 +1,150 @@
+<div class="row">
+      <div class="col-md-6" style="margin-bottom: 5px;">
+          <label>نوع الوصاية :</label>
+          <select class="form-control" (change)="selectedtutelle = $event.target.value" >
+            <option  *ngFor="let w of typetutelle">{{w}}</option>
+          </select>
+      </div>
+</div>
+<div class="card" [hidden]="selectedtutelle != 'وصي'">
+  <div class="card-header">معلومات عن ولي الامر</div>
+  <div class="card-body" >
+    <div class="row col-md-6 form-group">
+      <label>ر.ب.و:</label>
+      <input  class="form-control"   type="text"  >
+     <div> <input type="checkbox">لا يتوفر على ر.ب.و</div>
+  </div>
+  <div class="row">
+  <div class="col-md-6 form-group">
+    <label>الاسم بالعربية :</label>
+    <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+  <label>النسب بالعربية :</label>
+  <input  class="form-control"  type="text"  >
+</div>
+
+  <div class="col-md-6 form-group">
+    <label>الاسم بالفرنسية :</label>
+    <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+  <label>النسب بالفرنسية :</label>
+  <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+  <label>المهنة:</label>
+  <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+<label>العنوان:</label>
+<input  class="form-control"  type="text"  >
+</div>
+
+<div class="col-md-6 form-group">
+  <label>البريد الالكتروني :</label>
+  <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+<label>الهاتف :</label>
+<input  class="form-control"  type="text"  >
+</div>
+</div>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">معلومات عن الأب </div>
+  <div class="card-body" >
+    <div class="row col-md-6 form-group">
+      <label>ر.ب.و:</label>
+      <input  class="form-control"   type="text"  >
+     <div> <input type="checkbox">لا يتوفر على ر.ب.و</div>
+  </div>
+  <div class="row">
+  <div class="col-md-6 form-group">
+    <label>الاسم بالعربية :</label>
+    <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+  <label>النسب بالعربية :</label>
+  <input  class="form-control"  type="text"  >
+</div>
+
+  <div class="col-md-6 form-group">
+    <label>الاسم بالفرنسية :</label>
+    <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+  <label>النسب بالفرنسية :</label>
+  <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+  <label>المهنة:</label>
+  <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+<label>العنوان:</label>
+<input  class="form-control"  type="text"  >
+</div>
+
+<div class="col-md-6 form-group">
+  <label>البريد الالكتروني :</label>
+  <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+<label>الهاتف :</label>
+<input  class="form-control"  type="text"  >
+</div>
+</div>
+
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">معلومات عن الأم </div>
+  <div class="card-body" >
+    <div class="row col-md-6 form-group">
+      <label>ر.ب.و:</label>
+      <input  class="form-control" type="text"  >
+     <div> <input type="checkbox">لا يتوفر على ر.ب.و</div>
+  </div>
+  <div class="row">
+  <div class="col-md-6 form-group">
+    <label>الاسم بالعربية :</label>
+    <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+  <label>النسب بالعربية :</label>
+  <input  class="form-control"  type="text"  >
+</div>
+
+  <div class="col-md-6 form-group">
+    <label>الاسم بالفرنسية :</label>
+    <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+  <label>النسب بالفرنسية :</label>
+  <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+  <label>المهنة:</label>
+  <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+<label>العنوان:</label>
+<input  class="form-control"  type="text"  >
+</div>
+
+<div class="col-md-6 form-group">
+  <label>البريد الالكتروني :</label>
+  <input  class="form-control"  type="text"  >
+</div>
+<div class="col-md-6 form-group">
+<label>الهاتف :</label>
+<input  class="form-control"  type="text"  >
+</div>
+</div>
+
+  </div>
+</div>

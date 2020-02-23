@@ -1,0 +1,6 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" *ngFor="let item of data; let i = index" (click)="tabclicked(i)" >
+    <a class="nav-link " [ngClass]="{'active':i== indexActived}" [id]="item" data-toggle="tab"
+     role="tab"  aria-selected="true">{{item}}</a>
+  </li>
+</ul>

@@ -1,0 +1,20 @@
+.nav-tabs .nav-item li a{
+  margin-bottom: -1px;
+  background-color:#f1f2f4;
+  border: 1px solid #cacaca;
+  color: #333;
+}
+.nav-tabs .nav-link {
+    border: 1px solid lightgray;
+    margin-right: 1px;
+    cursor: pointer;
+    padding: 10px 30px;
+}
+ .nav-tabs > li a.active{
+  border-top: 3px solid#3c8dbc;
+  border-bottom: 0;
+}
+.nav-tabs .nav-item {
+  margin-bottom: -1px;
+  background-color: #f1f2f4;
+}

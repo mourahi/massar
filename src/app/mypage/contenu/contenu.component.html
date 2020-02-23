@@ -1,0 +1,37 @@
+<h4>الرئيسية</h4>
+<div class="card">
+  <div class="card-body">
+ <h5 class="p-0 mt-0">تتبع عمليات تدبير التمدرس</h5>
+ <hr class="p-0">
+<div class="row">
+  <div class="col-4" *ngFor="let item of myboxdata" >
+<app-mybox [databox]="item"></app-mybox>
+  </div>
+</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4" *ngFor="let chart of mychartdatas">
+<div class="card" style="margin-left:20px" >
+  <div class="card-body">
+    <h5>{{chart.legend}}</h5><hr class="p-0 m-0">
+    <div style="  margin: auto; width: 50%;">
+<app-mychart [datachart]="chart"></app-mychart>
+</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+ <h5 class="p-0 mt-0">البيانات الخاطئة</h5>
+ <hr class="p-0">
+<div class="row">
+  <div class="col-4" *ngFor="let it of myboxdataErr" >
+<app-mybox [databox]="it"></app-mybox>
+  </div>
+</div>
+  </div>
+</div>

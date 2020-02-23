@@ -1,0 +1,12 @@
+<div class="dropdown" style="text-align: center;" (mouseleave)="showit=false">
+  <button class="dropbtn" (click)="showit = !showit">
+    <i class="fas fa-th" ></i>
+    {{title}} <i class="fas fa-caret-down" style="float:left;"></i>
+  </button>
+  <div class="dropdown-content" [hidden]="!showit">
+    <div class="choixtitle" *ngFor="let item of mydata" (click)="clicktitle(item.title)">
+     <i [ngClass]="item.icon"></i> {{item.title}}
+    </div>
+  </div>
+</div>
+<app-mytree [title]="title"></app-mytree>

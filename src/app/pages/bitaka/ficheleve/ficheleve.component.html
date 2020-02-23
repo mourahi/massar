@@ -1,0 +1,15 @@
+<p style="margin: 20px 0px;font-size: 1.4rem;">بطاقة التلميذ {{eleve.nmassar}}</p>
+<div class="card cardall">
+  <div class="card-body" >
+<!-- ICI TABS-->
+<app-mytab [myarray]="arraytab" (indexTab)="indexTab($event)" ></app-mytab>
+<div [ngSwitch]="itab" style="margin-top:15px; padding:10px" >
+<app-infoeleve [eleve]="eleve" *ngSwitchCase='0'></app-infoeleve>
+<app-walieleve *ngSwitchCase = '1'></app-walieleve>
+<app-scolariteeleve *ngSwitchCase = '2'></app-scolariteeleve>
+<app-departeleve *ngSwitchCase = '3' [nmassar]="eleve.nmassar"></app-departeleve>
+<app-sortieeleve *ngSwitchCase = '4' [nmassar]="eleve.nmassar"></app-sortieeleve>
+<app-appuieleve *ngSwitchCase = '5'></app-appuieleve>
+</div>
+  </div>
+</div>

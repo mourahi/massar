@@ -1,0 +1,45 @@
+.form-group{
+  width: 300px;
+  display: inline-block;
+}
+.mybtn button{
+float: left;
+height: 35px;
+margin-top: 10px;
+margin-bottom: 10px;
+border: 1px solid transparent;
+}
+.col-6{
+  margin-top: 10px;
+}
+.mybtn .dropdown {
+  background: #0083c9;
+  float:left;
+  margin-left:10px;
+  padding: 0;
+  height: 0;
+}
+.mybtn .dropbtn{
+  background:#0083c9;
+  float: left;
+  margin-top: 10px;
+  padding: 0px;
+  border-radius: 3px;
+padding-left: 5px;
+padding-right: 5px;
+}
+.mybtn .dropdown-content{
+  top:40px;
+}
+
+.show{
+  display: block;
+}
+.hide{
+  display:none;
+}
+.card{
+  border:1px solid transparent;
+  border-top:2px solid #0083c9;
+  margin-bottom: 20px;
+}

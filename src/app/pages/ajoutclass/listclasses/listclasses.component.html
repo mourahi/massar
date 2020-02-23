@@ -1,0 +1,9 @@
+
+<div class="form-group">
+  <label for="myselect">المستوى : </label>
+  <select class="form-control" id="myselect" (change)="selectedniveau($event.target.value)" >
+    <option >جميع المستويات</option>
+    <option *ngFor="let item of nameuniqueclasses" >{{item.niveau}}</option>
+  </select>
+</div>
+<app-smarttable [data] = "nameclasses" [maxview]="10"></app-smarttable>

@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body" >
+    <div class="card-header"></div>
+    <div style="padding: 10px">
+<div class="row">
+  <div class="col-md-6 form-group">
+      <label>نوع العملية:</label>
+      <select class="form-control" #operation>
+        <option value="1">اعادة الادماج</option>
+        <option value="2">إنقطاع</option>
+      </select>
+  </div>
+  <div class="col-md-6 form-group">
+      <label>تاريخ الالتحاق بالمؤسسة:</label>
+      <input class="form-control" type="text" type="date" #dsortie >
+  </div>
+  <div class="col-md-12">
+    <button  class="btn btn-primary" (click)="plus(operation.value, dsortie.value)" > <i class="fa fa-plus"></i></button>
+ </div>
+</div>
+<div class="clearfix mb-3"></div>
+<app-smarttable [data]="sorties" [newKeysnames]="{
+  ascolaire: 'السنة الدراسية',
+  ecoleorigine: 'رمز و اسم المؤسسة',
+  niveau:'المستوى',
+  cla: 'القسم',
+  operation: 'نوع العملية',
+  doperation: 'تاريخ العملية'
+}">
+</app-smarttable>
+<div class="col-md-12">
+ <button   class="btn btn-primary" (click) ="cancel()" > الغاء<i class="fa fa-times"></i></button>
+  <button  class="btn btn-primary" (click)="save()" > حفظ <i class="fa fa-save"></i></button>
+</div>
+  </div>
+</div>
+</div>
+
+

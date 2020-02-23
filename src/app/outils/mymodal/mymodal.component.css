@@ -1,0 +1,11 @@
+.modal-header{
+  color: white;
+}
+.ok{
+  background-color: green;
+  border: 1px solid transparent;
+}
+.err{
+background-color: #d33724;
+border: 1px solid transparent;
+}

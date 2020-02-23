@@ -1,0 +1,26 @@
+<h4>إعادة التسجيل </h4>
+<app-choixclasses [choixSelect]="3" (save)="showfilterclass($event)"></app-choixclasses>
+
+<!-- ICI TABS-->
+<div [hidden]="showtable">
+  <div class="card">
+    <div class="card-body" >
+<app-mytab [myarray]="arraytab"  (indexTab)="indexTab($event)" ></app-mytab>
+<div class="mybtn">
+  <button  class="btn-primary" *ngIf="index != 0" [disabled]="dataeleves.length ==0"
+  style="float: right;height: 35px;" (click)="annulerInscription()">
+  الغاء التسجيل
+</button>
+<button  class="btn-primary" *ngIf="index == 0" [disabled]="dataeleves.length ==0"
+style="float: right;height: 35px;" (click)="inscription()">
+تأكيد التسجيل
+</button>
+</div>
+<div class="clearfix"></div>
+
+<app-smarttable [data]="dataeleves"
+[newKeysnames]="itemsSmartTableCheck"
+[maxview]="20"></app-smarttable>
+    </div>
+  </div>
+</div>

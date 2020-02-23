@@ -1,0 +1,3 @@
+.btn-primary.disabled, .btn-primary:disabled {
+opacity: 0.4;
+}

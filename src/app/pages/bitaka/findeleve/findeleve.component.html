@@ -1,0 +1,38 @@
+<h4>بحث فردي</h4>
+<div class="card">
+  <div class="card-body" >
+    <p>معايير البحث</p><hr>
+<div class="row">
+  <div class="col-md-6 form-group">
+          <label>رقم التلميذ :</label>
+          <input #nmassar class="form-control" type="text">
+  </div>
+  <div class="col-md-6 form-group">
+    <label>تاريخ الازدياد :</label>
+    <input #dnaissance class="form-control" type="text">
+  </div>
+  <div class="col-md-6 form-group">
+    <label>النسب :</label>
+    <input class="form-control" type="text">
+</div>
+<div class="col-md-6 form-group">
+<label>الاسم :</label>
+<input class="form-control" type="text">
+</div>
+<div class="col-md-12 mybtn">
+  <button  class="btn-primary float-left"
+   (click)="btnclick({'nmassar': nmassar.value,'dnaissance': dnaissance.value})"
+   > البحث <i class="fa fa-search" ></i></button>
+</div>
+</div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-body" >
+<app-smarttable [data]="dataeleve"
+[newKeysnames]="itemsSmartTableLink"
+[maxview]="20"></app-smarttable>
+  </div>
+</div>

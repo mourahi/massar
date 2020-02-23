@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-body" >
+    <div class="card-header"></div>
+    <div style="padding: 10px">
+<div class="row">
+  <div class="col-md-6 form-group">
+      <label>تاريخ المغادرة:</label>
+      <input class="form-control" type="text" type="date" #ddepart >
+  </div>
+  <div class="col-md-6 form-group">
+      <label>تاريخ الالتحاق بالمؤسسة:</label>
+      <input  class="form-control"   type="text"  >
+  </div>
+  <div class="col-md-12">
+    <button  class="btn btn-primary" (click)="save(ddepart.value)" > حفظ شهادة المغادرة <i class="fa fa-save"></i></button>
+   <button   class="btn btn-primary" (click) ="cancel()" [disabled]="departs.length == 0"> الغاء<i class="fa fa-times"></i></button>
+ </div>
+</div>
+<div class="clearfix mb-3"></div>
+<app-smarttable [data]="departs" [newKeysnames]="{
+  ascolaire: 'السنة الدراسية',
+  ecoleorigine: 'رمز و اسم المؤسسة',
+  ddepart: 'تاريخ المغادرة',
+  ecoledestination: 'رمز و اسم مؤسسة الاستقبال',
+  dreception : 'تاريخ الاستقبال'
+}"></app-smarttable>
+  </div>
+</div>
+</div>

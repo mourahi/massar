@@ -1,0 +1,50 @@
+.dropbtn {
+  background-color:transparent;
+  color:#b8c7ce;
+  padding: 6px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid lightgray;
+  width: 250px;
+  text-align: right;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin:5px;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropbtn {
+  color: white;
+}
+
+.choixtitle{
+  background-color:#00c0ef;
+color:white;
+width: 260px;
+text-align: right;
+border:2px solid white;
+cursor: pointer;
+}
+.choixtitle i{
+  height: 60px;
+  width: 59px;
+  padding-top: 10px;
+  padding-right: 10px;
+  background-color: #009abf;
+  margin-left: 10px;
+}
+.choixtitle:hover{
+  opacity: 0.6;
+}

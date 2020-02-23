@@ -1,0 +1,28 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" [ngClass]="{'ok': message == 'ok', 'err': message != 'ok'}">
+        <h5 class="modal-title" id="exampleModalLabel">
+         <span *ngIf="message == 'ok'">معلومات</span>
+         <span *ngIf="message != 'ok'">خطأ</span>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <span *ngIf="message == 'ok'" >لقد تم اجراء التغييرات بنجاح</span>
+       <span *ngIf="message != 'ok'" >لا يمكن اجراء التغيير على الاقسام التالية : {{message}}  نضراً لوجود روابط بينها وبين وحدات أخرى</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+         data-dismiss="modal" [ngClass]="{'ok': message == 'ok', 'err': message != 'ok'}"
+         >اغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>

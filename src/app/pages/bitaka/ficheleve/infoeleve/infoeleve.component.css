@@ -1,0 +1,32 @@
+
+.btn-primary:hover, .btn-primary:active, .btn-primary.hover {
+  background-color: #367fa9;
+  color: white;
+}
+.btn-primary {
+  margin-left: 5px;
+}
+.img-circle {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+}
+.myimg {
+  display: inline-block;
+  cursor: pointer;
+  background: #f0f0f0;
+  color: #fff;
+  padding: 6px 0;
+  border: 1px solid#b6bbbf;
+  width: 120px;
+  text-align: center;
+  border-radius: 5px;
+  color:#858d94;
+  margin-top: 35%;
+}
+.mt-25{
+  margin-top:25px;
+}
+label{
+  padding-left: 0.5rem;
+}

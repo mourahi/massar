@@ -1,0 +1,34 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 260px;
+}
+
+li a {
+  display: inline-block;
+  color: #b8c7ce;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  color: white;
+  cursor: pointer;
+}
+.fright{
+  position: absolute;
+  left: 8px;
+  top: 10px;
+}
+.bgactive{
+  background-color: #1d3f58;
+}
+:host .active{
+  color: white;
+}
+.nav-tabs .nav-item {
+  margin-bottom: -1px;
+  background-color: #f1f2f4;
+}

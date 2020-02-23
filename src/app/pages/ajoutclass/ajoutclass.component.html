@@ -1,0 +1,32 @@
+<h3>إضافة الأقسام </h3>
+
+
+
+<!--choixclass component-->
+<app-choixclasses (save)="saved()" [choixSelect]="0"></app-choixclasses>
+<!--fin choixclass-->
+
+
+<div class="card">
+  <div class="card-header"> </div>
+  <div class="card-body">
+<app-smarttable [data]="myStructure" [maxview] ="6"
+[newKeysnames]="{
+  niveau:'المستوى',
+  nbrPlan:'اقسام الخريطة',
+  nbrEnreg:{input:'عدد الاقسام'}
+}" >
+</app-smarttable>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    لائحة الأقسام
+  </div>
+  <div class="card-body">
+<app-listclasses></app-listclasses>
+  </div>
+</div>
+
+

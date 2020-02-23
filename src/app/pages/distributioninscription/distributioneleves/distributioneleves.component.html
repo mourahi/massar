@@ -1,0 +1,40 @@
+<h4>توزيع التلاميذ على الأقسام  </h4>
+<app-choixclasses [choixSelect]="2" (save)="showfilterclass()"></app-choixclasses>
+
+<div class="card">
+  <div class="card-body" >
+<!-- ICI TABS-->
+<app-mytab [myarray]="arraytab" (indexTab)="indexTab($event)" ></app-mytab>
+<div class="mybtn">
+  <button  class="btn-primary" style="float: right;height: 35px;"
+  (click)="annulerDistribution()"> الغاء التوزيع </button>
+</div>
+<div class="clearfix"></div>
+
+  <!-- mytable  datakeys  dataviewed-->
+<app-smarttable
+[data]="dataeleves" [maxview]="20"
+[newKeysnames]="itemsSmartTableCheck">
+</app-smarttable>
+
+  </div>
+</div>
+
+<!--fin tabs et commence le redistribution manuelle-->
+<div class="card">
+  <div class="card-body" >
+<p>اعادة توزيع التلاميذ</p> <hr>
+<div class="row">
+  <div class="col-4">
+    <label for="myselect">القسم : </label>
+    <select class="form-control"  #distination >
+      <option *ngFor="let c of listnumerosclasses" >{{c.numero}}</option>
+    </select>
+  </div>
+  <div class="mybtn col-4">
+    <button  class="btn-primary" style="float: right;height: 35px;margin-top: 28px;"
+    (click)="btnReDistribuTo(distination.value)"> اعادة توزيع التلاميذ </button>
+  </div>
+</div>
+</div>
+</div>

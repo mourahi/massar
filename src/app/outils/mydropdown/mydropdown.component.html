@@ -1,0 +1,9 @@
+<div class="dropdown" style="text-align: center;" (mouseleave)="showit=false">
+  <button class="dropbtn" (click)="showit = !showit" >
+   <span *ngIf="format == '' || format == undefined" >{{header.d}}</span>
+   <span *ngIf="format != '' && format != undefined" > <i class="fas fa-print"></i> {{format}}</span>
+    <i class="fas fa-caret-down"></i></button>
+  <div class="dropdown-content" [hidden]="!showit">
+  <a *ngFor="let item of mylistdata" (click)="changement(item); showit = false;">{{item.d}}</a>
+  </div>
+</div>

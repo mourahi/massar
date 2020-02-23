@@ -1,0 +1,21 @@
+<div class="dropdown" style="text-align: center;" (mouseleave)="showit=false">
+  <button class="dropbtn" (click)="showit = !showit" >
+    <img src="assets/img/user.png"> اسم المستخدم
+   </button>
+  <div class="dropdown-content" [hidden]="!showit">
+    <img src="assets/img/buser.png">
+  <div >
+      اسم المستخدم
+  </div>
+
+  <div style="border-top:1px solid rgba(255, 255, 255, 0.788);margin-top:40px; padding-top:5px; padding-bottom:5px;">
+    <i class="fa fa-edit"></i> تغيير كلمة المرور
+  </div>
+  <div style="background-color: #f9f9f9;padding:6px">
+<button class="btn btn-primary btn-flat">الملف الشخصي <i class="fa fa-user"></i></button>
+<span style="display:inline-block;width:20px;"></span>
+<button class="btn btn-primary btn-flat">الخروج<i class="fa fa-power-off"></i></button>
+  </div>
+
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="dropdown" style="text-align: center;" (mouseleave)="showit=false">
+  <button class="dropbtn" (click)="showit = !showit" ><i class="fa fa-th"></i> </button>
+  <div class="dropdown-content" [hidden]="!showit">
+  <h4 style="color:#0083c9;text-align: right;">تطبيقاتي</h4>
+  <div class="tatbi9at" *ngFor="let item of data" >
+    <img *ngIf="item.img"  [src]="'assets/img/' + item.img">
+    <i *ngIf="item.icon" [class]="item.icon + ' fa-3x'"></i>
+    {{item.title}}
+  </div>
+
+  </div>
+</div>

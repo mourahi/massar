@@ -1,0 +1,11 @@
+.col-4{
+  padding-left:0px;
+  padding-right: 0px;
+}
+.row {
+  margin-right: 5px;
+}
+.card{
+  border:1px solid transparent;
+  border-top:2px solid #0083c9;
+}
