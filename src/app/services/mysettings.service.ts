@@ -7,9 +7,9 @@ import { Subject, Observable } from 'rxjs';
 export class MysettingsService {
   chargementOk = false;
 
-  filtreActive = {typeEnseignement: '', cycle: '', niveau: '', classe: ''};
-  typeEnseignement = ['عام'];
-  cycle = ['ابتدائي'];
+  filtreActive = {ascolaire:'', types: '', cycle: '', niveau: '', classe: ''};
+  types = ['عام'];
+  cycles = ['ابتدائي'];
 
   itemsSmartTableLink = {
     nmassar:'رقم التلميذ',
@@ -318,11 +318,13 @@ export class MysettingsService {
         adresse: ''
     }
 ];*/
- ListEleves;
- ListDeparts;
- ListSorties;
+  ListEleves;
+  ListDeparts;
+  ListSorties;
+  ListScolarities;
 
  constructor() {}
+
 
 suspender = new Subject<string>();
 getsuspender(): Observable<string> {

@@ -14,24 +14,24 @@ export class ChoixclassesComponent implements OnInit {
  showit;
  listnumerosclasses;
  listniveaux;
- typeEnseignement;
- cycle;
+ types;
+ cycles;
   constructor(private service: MysettingsService) { }
 
   ngOnInit() {
 
-    this.typeEnseignement = this.service.typeEnseignement;
-    this.cycle = this.service.cycle;
+    this.types = this.service.types;
+    this.cycles = this.service.cycles;
     this.mylist = [{d: 'PDF'},{d:'XLS'}];
     this.listniveaux = this.service.myClasses.slice();
     this.getactivelistniveau(this.listniveaux[0].niveau);
-    this.service.filtreActive = {typeEnseignement: this.typeEnseignement[0],
-        cycle: this.cycle[0], niveau: this.listniveaux[0].niveau, classe: ''};
+    this.service.filtreActive = {ascolaire:'2019/2020', types: this.types[0],
+        cycle: this.cycles[0], niveau: this.listniveaux[0].niveau, classe: ''};
   }
 
   settFiltreActive(e){
     switch (e.id) {
-      case 'typeEnseignement':
+      case 'types':
 
         break;
       case 'cycle':

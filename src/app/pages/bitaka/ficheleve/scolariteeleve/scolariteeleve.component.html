@@ -1,1 +1,20 @@
-<p>scolariteeleve works!</p>
+
+<div class="card">
+  <div class="card-body" >
+    <div class="card-header"></div>
+<app-smarttable
+[data]="listscolarities"  [maxview]="20"
+[newKeysnames]="{
+ascolaire:'السنة الدراسية',
+ecoleorigine:'رمز و اسم المؤسسة',
+niveau :'المستوى',
+cla :'القسم',
+moy :'المعدل',
+resultat :'النتيجة',
+remarque : 'ملاحظات',
+'addlink' : {name: 'بيان النتائج', path:''}
+}">
+</app-smarttable>
+
+  </div>
+</div>

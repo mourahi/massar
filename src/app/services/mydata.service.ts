@@ -42,6 +42,13 @@ export class MydataService {
       });
     return subject.asObservable();
   }
+  getMyScolarite(): Observable<any>  {
+    const subject = new Subject<string>();
+    this.http.get(this.getMyURL(5)).subscribe(x => {
+         subject.next(this.preparemyjson(x));
+      });
+    return subject.asObservable();
+  }
   private preparemyjson(d): any {
       let titenamesarray = new Array();
       let titlenames = {};
@@ -57,7 +64,7 @@ export class MydataService {
         v.forEach(el => {
           const k = el.split(':');
           iii = false;
-          o[k[0].trim()] = k[1].trim();
+          o[k[0].trim()] =k[1].trim();
           ia += 1;
         });
         titlenames = o;
@@ -67,7 +74,7 @@ export class MydataService {
         let i = 0;
         v.forEach(el => {
           const kk = el.split(':');
-          oo[titlenames[kk[0].trim()]] = kk[1].trim();
+          oo[titlenames[kk[0].trim()]] =  kk[1] == undefined ? '' :  kk[1].trim();
           i += 1;
         });
         titenamesarray.forEach( f => {

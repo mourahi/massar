@@ -15,6 +15,7 @@ listlang = [{d: 'العربية', path: ''}, {d: 'français', path: ''}];
 title;
 chargementOk = false;
 
+
 constructor( private service: MydataService, private settings: MysettingsService) {}
 ngOnInit(): void {
   this.getListEleves();
@@ -26,6 +27,7 @@ getListEleves() {
     this.settings.myClasses = re;
     this.settings.getlistNumClasses();
     this.settings.filtreActive.niveau = re[0].niveau;
+    this.settings.filtreActive.ascolaire = re[0].ascolaire;
     const eleves = this.service.getMyData();
     eleves.subscribe(rre => {
       console.log('Listeleves chargé depuis internet re= ', rre);
@@ -40,6 +42,11 @@ getListEleves() {
       sorties.subscribe( s => {
         console.log('ListSortie chargé depuis internet re= ', s);
         this.settings.ListSorties = s;
+      });
+      const scolarities = this.service.getMyScolarite();
+      scolarities.subscribe( as => {
+        this.settings.ListScolarities = as;
+
       });
     });
   });
