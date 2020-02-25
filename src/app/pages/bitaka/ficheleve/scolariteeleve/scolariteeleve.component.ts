@@ -7,18 +7,23 @@ import { MysettingsService } from 'src/app/services/mysettings.service';
   styleUrls: ['./scolariteeleve.component.css']
 })
 export class ScolariteeleveComponent implements OnInit {
-  @Input() nmassar;
+  @Input() eleve;
   listscolarities;
   constructor(private service: MysettingsService) { }
 
   ngOnInit(): void {
-    const nowscolarite = this.service.ListEleves.filter( j => j.nmassar == this.nmassar)[0];
-    this.listscolarities = this.service.ListScolarities.filter(i => i.nmassar == this.nmassar);
+    this.listscolarities = this.service.ListScolarities.filter(i => i.nmassar == this.eleve.nmassar);
+    const myecole = this.service.ecole.gresa + '-' + this.service.ecole.name;
+    this.listscolarities.forEach(el => {
+      if (el.ecoleorigine == '') { el.ecoleorigine = myecole; }
+      if (el.niveau == '') { el.niveau = this.service.getNiveauFormCla(el.cla); }
+    });
+
     this.listscolarities.unshift({
       ascolaire: this.service.filtreActive.ascolaire,
-      ecoleorigine: 'المؤسسة التعليمية',
-      niveau : nowscolarite.cla,
-      cla : nowscolarite.cla,
+      ecoleorigine: myecole,
+      niveau : this.service.getNiveauFormCla(this.eleve.cla),
+      cla : this.eleve.cla,
       moy : '',
       resultat : '',
       remarque : ''

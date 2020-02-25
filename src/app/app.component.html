@@ -4,7 +4,7 @@
         <div id="myheader" >
         <a (click)="hidemenu = !hidemenu" > <i class="fas fa-bars itembar"></i></a>
         <a> <i class="fa fa-home itembar"></i></a>
-        <a class="itembar"> المؤسسة التعليمية <i class="fas fa-cogs"></i></a>
+        <a class="itembar"> {{ ecole }} <i class="fas fa-cogs"></i></a>
         <app-tatbikati ></app-tatbikati>
         <app-mydropdown [mylistdata]="listannees"></app-mydropdown>
 

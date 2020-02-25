@@ -7,7 +7,7 @@ import { MysettingsService } from 'src/app/services/mysettings.service';
   styleUrls: ['./departeleve.component.css']
 })
 export class DeparteleveComponent implements OnInit {
-  @Input() nmassar;
+  @Input() eleve;
   departs;
   constructor(private service: MysettingsService) { }
 
@@ -15,14 +15,19 @@ export class DeparteleveComponent implements OnInit {
    this.filterdeparts();
   }
   filterdeparts(){
-    this.departs = this.service.ListDeparts.filter(i => i.nmassar == this.nmassar);
+    this.departs = this.service.ListDeparts.filter(i => i.nmassar == this.eleve.nmassar);
+    const myecole = this.service.ecole.gresa + '-' + this.service.ecole.name;
+    this.departs.forEach(el => {
+      if (el.ecoleorigine == '') { el.ecoleorigine = myecole; }
+      if (el.ascolaire == '') { el.ascolaire = this.service.filtreActive.ascolaire; }
+    });
   }
   save(ddep) {
     this.service.setsuspender('');
     this.service.ListDeparts.push({
-      nmassar: this.nmassar,
-      ascolaire: '2019/2020',
-      ecoleorigine: 'مدرسة الرحمة d111',
+      nmassar: this.eleve.nmassar,
+      ascolaire: this.service.filtreActive.ascolaire,
+      ecoleorigine: this.service.ecole.gresa + '-' + this.service.ecole.name ,
       ddepart: ddep,
       ecoledestination:'',
       dreception: ''
@@ -31,23 +36,33 @@ export class DeparteleveComponent implements OnInit {
     this.changeSituation('في طور التحويل');
   }
   changeSituation(v) {
-    this.service.ListEleves.filter(i => i.nmassar == this.nmassar)[0].situation = v;
+    this.eleve.situation = v;
   }
 
   cancel() {
     this.service.setsuspender('');
-    if (this.departs.length > 0){
-      this.service.ListDeparts = this.service.ListDeparts.filter(i => i.nmassar != this.nmassar);
+    const ld = this.departs.length;
+    if (ld > 0){
+      const dv = this.departs[ld-1];
+      const teste = dv.ascolaire == this.service.filtreActive.ascolaire  &&
+       (dv.ecoledestination == '' ||
+       dv.ecoledestination == this.service.ecole.gresa + '-' + this.service.ecole.name );
+      if (teste){
+      let r = this.service.ListDeparts.filter(i => i.nmassar == this.eleve.nmassar);
+      this.service.ListDeparts = this.service.ListDeparts.filter(i => i.nmassar != this.eleve.nmassar);
+      r.pop();
+      if (r.length > 0) { this.service.ListDeparts = this.service.ListDeparts.concat(r);  }
       this.filterdeparts();
       if (this.departs.length == 0){
-        const l = this.service.ListSorties.filter(i => i.nmassar == this.nmassar);
+        const l = this.service.ListSorties.filter(i => i.nmassar == this.eleve.nmassar);
         if (l.length > 0){
           this.changeSituation(l[l.length - 1].situation);
-        }else {
+        } else {
           this.changeSituation('يزاول دراسته');
         }
 
       }
     }
   }
+}
 }

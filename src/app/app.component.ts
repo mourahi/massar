@@ -14,10 +14,12 @@ listannees = [{d: '2019/2020', path: ''}, {d: '2018/2019', path: ''}];
 listlang = [{d: 'العربية', path: ''}, {d: 'français', path: ''}];
 title;
 chargementOk = false;
+ecole;
 
 
 constructor( private service: MydataService, private settings: MysettingsService) {}
 ngOnInit(): void {
+  this.ecole = this.settings.ecole.name;
   this.getListEleves();
 }
 getListEleves() {

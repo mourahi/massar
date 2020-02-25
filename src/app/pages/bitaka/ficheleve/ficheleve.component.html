@@ -6,9 +6,9 @@
 <div [ngSwitch]="itab" style="margin-top:15px; padding:10px" >
 <app-infoeleve [eleve]="eleve" *ngSwitchCase='0'></app-infoeleve>
 <app-walieleve *ngSwitchCase = '1'></app-walieleve>
-<app-scolariteeleve *ngSwitchCase = '2' [nmassar]="eleve.nmassar"></app-scolariteeleve>
-<app-departeleve *ngSwitchCase = '3' [nmassar]="eleve.nmassar"></app-departeleve>
-<app-sortieeleve *ngSwitchCase = '4' [nmassar]="eleve.nmassar"></app-sortieeleve>
+<app-scolariteeleve *ngSwitchCase = '2' [eleve]="eleve"></app-scolariteeleve>
+<app-departeleve *ngSwitchCase = '3' [eleve]="eleve"></app-departeleve>
+<app-sortieeleve *ngSwitchCase = '4' [eleve]="eleve"></app-sortieeleve>
 <app-appuieleve *ngSwitchCase = '5'></app-appuieleve>
 </div>
   </div>

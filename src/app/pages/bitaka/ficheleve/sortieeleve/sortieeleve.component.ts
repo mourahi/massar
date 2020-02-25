@@ -7,7 +7,7 @@ import { MysettingsService } from 'src/app/services/mysettings.service';
   styleUrls: ['./sortieeleve.component.css']
 })
 export class SortieeleveComponent implements OnInit {
-  @Input() nmassar;
+  @Input() eleve;
   sorties;
   tmp;
   etat = 0;
@@ -17,19 +17,23 @@ export class SortieeleveComponent implements OnInit {
    this.filtersorties();
   }
   filtersorties() {
-    this.sorties = this.service.ListSorties.filter(i => i.nmassar == this.nmassar);
+    this.sorties = this.service.ListSorties.filter(i => i.nmassar == this.eleve.nmassar);
+    const myecole = this.service.ecole.gresa + '-' + this.service.ecole.name;
+    this.sorties.forEach(el => {
+      if (el.ecoleorigine == '') { el.ecoleorigine = myecole; }
+      if (el.niveau == '') { el.niveau = this.service.getNiveauFormCla(el.cla); }
+    });
   }
 
   save(){ // op==1 ==> اعادة الادماج  sinon = انقطاع
-    console.log("debut save tmp = ",this.tmp);
 
     this.service.setsuspender('');
-    this.service.ListSorties= this.service.ListSorties.filter(i => i.nmassar != this.nmassar);
+    this.service.ListSorties= this.service.ListSorties.filter(i => i.nmassar != this.eleve.nmassar);
     if ( this.tmp != undefined &&  this.tmp.length > 0) {
       this.service.ListSorties = [...this.service.ListSorties  , ...this.tmp];
       this.changeSituation(this.etat == 2 ? 'منقطع' : 'يزاول دراسته');
      } else if (this.etat == 0) {
-      const d = this.service.ListDeparts.filter(i => i.nmassar == this.nmassar).length > 0;
+      const d = this.service.ListDeparts.filter(i => i.nmassar == this.eleve.nmassar).length > 0;
       this.changeSituation( d ? 'في طور التحويل' : 'يزاول دراسته');
      }
 
@@ -40,11 +44,11 @@ export class SortieeleveComponent implements OnInit {
     const opera = op == 2 ? 'إنقطاع' : 'اعادة الادماج';
     this.tmp = JSON.parse(JSON.stringify(this.sorties));
     this.tmp.push({
-      nmassar: this.nmassar,
-      ascolaire: '2019/2020',
-      ecoleorigine: '',
-      niveau : '',
-      cla: 'cla',
+      nmassar: this.eleve.nmassar,
+      ascolaire: this.service.filtreActive.ascolaire,
+      ecoleorigine: this.service.ecole.gresa +'-'+ this.service.ecole.name,
+      niveau : this.service.getNiveauFormCla(this.eleve.cla),
+      cla: this.eleve.cla,
       operation: opera,
       doperation: dop
     });
@@ -67,9 +71,7 @@ export class SortieeleveComponent implements OnInit {
   }
 
   changeSituation(v) {
-    console.log("nouvelle situation :",v);
-
-    this.service.ListEleves.filter(i => i.nmassar == this.nmassar)[0].situation = v;
+    this.eleve.situation = v;
   }
 
 }

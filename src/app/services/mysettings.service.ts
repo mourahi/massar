@@ -6,8 +6,9 @@ import { Subject, Observable } from 'rxjs';
 })
 export class MysettingsService {
   chargementOk = false;
+  ecole = {name: 'مؤسسة ابتدائية', gresa:'X5555'};
 
-  filtreActive = {ascolaire:'', types: '', cycle: '', niveau: '', classe: ''};
+  filtreActive = {ascolaire: '', types: '', cycle: '', niveau: '', classe: ''};
   types = ['عام'];
   cycles = ['ابتدائي'];
 
@@ -333,6 +334,18 @@ getsuspender(): Observable<string> {
 setsuspender(v: string) {
   this.suspender.next(v);
 }
+
+  getNiveauFormCla(cla){
+    let r = '';
+    cla = cla.indexOf('-') < 0 ? cla : cla.split('-')[0];
+    this.myClasses.forEach(element => {
+      if (element.cla == cla) {
+        r = element.niveau;
+        return r;
+       }
+    });
+    return r;
+  }
 
   getIdFromNameNiveau() {
       let x = '1APG';
