@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MysettingsService } from 'src/app/services/mysettings.service';
+import { isDate } from 'util';
 
 @Component({
   selector: 'app-departeleve',
@@ -24,10 +25,22 @@ export class DeparteleveComponent implements OnInit {
   }
 
   save(ddep,drecp) {
+    let msgerreur = '';
+    if (ddep == undefined || ddep == ''){
+      msgerreur = ' المرجو ملء تاريخ المغادرة' + '<br>';
+    }
     if (drecp == undefined || drecp == ''){
-      this.service.setsuspender({etat: 'no', message : 'المرجو ملء تاريخ الالتحاق بالمؤسسة'});
+      msgerreur += ' المرجو ملء تاريخ الالتحاق بالمؤسسة';
+    }
+    if ( msgerreur !=''){
+      this.service.setsuspender({etat: 'no', message : msgerreur});
       return false;
     }
+    if (drecp > ddep){
+      this.service.setsuspender({etat: 'no', message : 'تاريخ المغادرة يجب ان يكون اكبر من تاريخ الالتحاق بالمؤسسة'});
+      return false;
+    }
+
 
     this.service.ListDeparts.push({
       nmassar: this.eleve.nmassar,

@@ -17,7 +17,7 @@ export class MyspinnerComponent implements OnInit {
           this.etatshowit = !this.etatshowit;
           setTimeout(() => {
             this.etatshowit = false;
-            if (s.etat != '') {
+            if (s.etat != '' && s.etat != undefined) {
               this.info = s;
               (document.getElementById('modalbutton') as HTMLElement).click();
             }

@@ -5,11 +5,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" [ngClass]="{
-          'ok': info.etat == 'ok',
-          'err': info.etat == 'err',
-          'no' : info.etat == 'no'
-      }">
+      <div class="modal-header" [ngClass]="{'ok': info.etat == 'ok','err': info.etat == 'err', 'no': info.etat == 'no'}">
         <h5 class="modal-title" id="exampleModalLabel">
          <span *ngIf="info.etat == 'ok'">معلومات</span>
          <span *ngIf="info.etat == 'err'">خطأ</span>
@@ -22,7 +18,7 @@
       <div class="modal-body">
        <span *ngIf="info.etat == 'ok'" >لقد تم اجراء التغييرات بنجاح</span>
        <span *ngIf="info.etat == 'err'" >لا يمكن اجراء التغيير على الاقسام التالية : {{info.message}}  نضراً لوجود روابط بينها وبين وحدات أخرى</span>
-       <span *ngIf="info.etat == 'no'" >{{info.message}}</span>
+       <span *ngIf="info.etat == 'no'" [innerHTML]="info.message" ></span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary"
