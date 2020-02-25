@@ -21,6 +21,11 @@ export class PrelistelevesComponent implements OnInit {
      // this.indexTab(0);
       this.showfilterclass(false);
   }
+  correct(){
+    console.log("data",this.dataeleves);
+
+  }
+
   showfilterclass(e) {
       this.showtable = e == null ? false : true;
       const v = this.filterdata();

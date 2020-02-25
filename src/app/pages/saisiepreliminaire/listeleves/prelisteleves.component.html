@@ -1,6 +1,6 @@
-<p>listeleves works!</p>
-<h4>لائحة تلاميذ المؤسسة </h4>
-<app-choixclasses [choixSelect]="1" (save)="showfilterclass($event)"></app-choixclasses>
+
+<h4>لائحة تلاميذ  </h4>
+<app-choixclasses [choixSelect]="4" (save)="showfilterclass($event)"></app-choixclasses>
 
 <!-- ICI TABS-->
 <div [hidden]="showtable">
@@ -8,6 +8,10 @@
     <div class="card-body" >
 <app-mytab [myarray]="arraytab"  (indexTab)="indexTab($event)" ></app-mytab>
 
+<button [hidden]="index != 1"  class="btn-primary" (click)="correct()"
+style="padding:5px; margin:5px;" > تصحيح وضعية المكررين <i class="fa fa-edit" ></i></button>
+
+<div class="clearfix"></div>
 
 <app-smarttable [data]="dataeleves"
 [newKeysnames]="{
