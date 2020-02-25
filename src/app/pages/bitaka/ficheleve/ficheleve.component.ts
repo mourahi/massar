@@ -21,11 +21,16 @@ export class FicheleveComponent implements OnInit {
       this.eleve = nm.n ? this.service.ListEleves.filter(i => i.n == nm.n)[0] :
       this.service.ListEleves.filter(i => i.nmassar == nm.nmassar)[0];
     });
-    this.arraytab = ['معلومات التلميذ','الولي','التمدرس','شهادة المغادرة','الانقطاع و اعادة الادماج','الدعم'];
-    console.log("eleve:",this.eleve);
-
+    this.arraytab = [
+          'معلومات التلميذ',
+          'الولي',
+          'التمدرس',
+          'شهادة المغادرة',
+          'الانقطاع و اعادة الادماج',
+          'الدعم'
+        ];
   }
-  indexTab(i){
+  indexTab(i) {
     this.itab = i;
   }
 

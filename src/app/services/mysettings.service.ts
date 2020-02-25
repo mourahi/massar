@@ -6,27 +6,27 @@ import { Subject, Observable } from 'rxjs';
 })
 export class MysettingsService {
   chargementOk = false;
-  ecole = {name: 'مؤسسة ابتدائية', gresa:'X5555'};
+  ecole = { name: 'مؤسسة ابتدائية', gresa: 'X5555'};
 
   filtreActive = {ascolaire: '', types: '', cycle: '', niveau: '', classe: ''};
   types = ['عام'];
   cycles = ['ابتدائي'];
 
   itemsSmartTableLink = {
-    nmassar:'رقم التلميذ',
-    addconcat: {name:'الاسم الكامل',concat:['arnom', 'arprenom']},
+    nmassar: 'رقم التلميذ',
+    addconcat: {name: 'الاسم الكامل', concat: ['arnom', 'arprenom']},
     dnaissance: 'تاريخ الازدياد',
-    genre:'النوع',
+    genre: 'النوع',
     cla: 'القسم',
-    addlink: {name:'بطاقة التلميذ', path:'ficheeleve'}
+    addlink: {name: 'بطاقة التلميذ', path: 'ficheeleve'}
     };
     itemsSmartTableCheck = {
-      addcheck:'addcheck',
+      addcheck: 'addcheck',
       nmassar: 'رقم التلميذ',
-      addconcat: {name:'الاسم الكامل',concat:['arnom', 'arprenom']},
+      addconcat: {name: 'الاسم الكامل', concat: ['arnom', 'arprenom']},
       genre: 'النوع',
       dnaissance: 'تاريخ الازدياد',
-      addlink: {name:'بيانات التلميذ', path:'ficheeleve'}};
+      addlink: {name: 'بيانات التلميذ', path: 'ficheeleve'}};
 
  /* myClasses: {cla: string, niveau: string, nbrPlan: number, nbrEnreg: number }[] = [
     {id: '1APG', name: 'الاولى ابتدائي عام', nbrPlan: 3, nbrEnreg: 3},
@@ -349,7 +349,7 @@ setsuspender(v: {etat: string, message: string} = {etat: '', message: ''}) {
 
   getIdFromNameNiveau() {
       let x = '1APG';
-      if (this.filtreActive.niveau != undefined){
+      if (this.filtreActive.niveau != undefined) {
          x = this.myClasses.filter(i => i.niveau == this.filtreActive.niveau)[0].cla;
       }
       return x;
@@ -532,7 +532,7 @@ switch (key) {
   }*/
   getChartsAccueil() {
     return [
-      {legend: 'اعادة التسجيل', data:this.getNBListElevesInscrits() / this.getTotalEleves()},
+      {legend: 'اعادة التسجيل', data: this.getNBListElevesInscrits() / this.getTotalEleves()},
       {legend: 'توزيع التلاميذ على الاقسام', data: this.getNBListEleveDistribues() / this.getTotalEleves()},
       {legend: 'نتائج اخر السنة', data: 0}
     ];
@@ -545,31 +545,34 @@ switch (key) {
       {title: 'عدد الاقسام', valeur: this.getNBclasses(), icon: 'fa-university', path: 'ajoutclass', bg: '#00a65a'},
       {title: 'مجموع التلاميذ (الخريطة المعدلة)', valeur: 0, icon: 'fa-users', path: '', bg: '#f39c12'},
       {title: 'مجموع التلاميذ المسجلين', valeur: this.getNBListElevesInscrits(), icon: 'fa-edit', path: 'reinscription', bg: '#dd4b39'},
-      {title: 'مجموع التلاميذ الموزعين', valeur: this.getNBListEleveDistribues(), icon: 'fa-university', path: 'distributioneleves', bg: '#00c0ef'},
+      {title: 'مجموع التلاميذ الموزعين', valeur: this.getNBListEleveDistribues(),
+                             icon: 'fa-university', path: 'distributioneleves', bg: '#00c0ef'},
       {title: 'مجموع بيانات النتائج', valeur: 0, icon: 'fa-graduation-cap', path: '', bg: '#00a65a'},
     ];
   }
 
   getBoxAccueilErr(): {title: string, valeur: number, icon: string, path: string, bg: string}[] {
     return [
-      {title: 'تلاميذ محولون و لم يتم استقبالهم', valeur: this.getNbTransferNonreception(), icon: 'fa-users', path: 'anomalietransfer', bg: '#00c0ef'},
-      {title: 'أخطاء في تحديد الجنسية', valeur: this.getNbsansNationalite(), icon: 'fa-university', path: 'anomalienationalite', bg: '#00a65a'}
+      {title: 'تلاميذ محولون و لم يتم استقبالهم', valeur: this.getNbTransferNonreception(),
+                      icon: 'fa-users', path: 'anomalietransfer', bg: '#00c0ef'},
+      {title: 'أخطاء في تحديد الجنسية', valeur: this.getNbsansNationalite(),
+                      icon: 'fa-university', path: 'anomalienationalite', bg: '#00a65a'}
     ];
   }
-getNbTransferNonreception(){
+getNbTransferNonreception() {
   return this.ListEleves.filter(i => i.situation == 'في طور التحويل' ).length;
 }
-getNbsansNationalite(){
+getNbsansNationalite() {
   return this.ListEleves.filter(i => i.nationalite === '' ).length;
 }
   getNBclasses() {
     return this.getlistNumClasses().length;
   }
-  getTotalEleves(){
+  getTotalEleves() {
     return this.ListEleves.length;
   }
   getNBListEleveDistribues() {
-   return this.ListEleves.filter(i => (i.cla as string).indexOf('-')> -1 ).length;
+   return this.ListEleves.filter(i => (i.cla as string).indexOf('-') > -1 ).length;
   }
   getNBListElevesInscrits() {
     return this.ListEleves.filter(i => (i.situation as string).indexOf('غير ملتحق') < 0 ).length;

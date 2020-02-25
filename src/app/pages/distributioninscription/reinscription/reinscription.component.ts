@@ -14,7 +14,7 @@ export class ReinscriptionComponent implements OnInit {
   dataeleves;
   data;
   arraytab;
-  nbrEleves =0;
+  nbrEleves = 0;
   index = 0;
   showtable = false;
   itemsSmartTableCheck;
@@ -32,7 +32,7 @@ export class ReinscriptionComponent implements OnInit {
       this.arraytab =  ['غير ملتحق(' + v[0] + ')', 'تسجيلات مصادق عليها(' + v[1] + ')'];
   }
   indexTab(ind) {
-      if (ind == 1){
+      if (ind == 1) {
         this.index = ind;
       } else {
         this.index = 0;

@@ -22,14 +22,14 @@ export class ChoixclassesComponent implements OnInit {
 
     this.types = this.service.types;
     this.cycles = this.service.cycles;
-    this.mylist = [{d: 'PDF'},{d:'XLS'}];
+    this.mylist = [{d: 'PDF'}, {d: 'XLS'}];
     this.listniveaux = this.service.myClasses.slice();
     this.getactivelistniveau(this.listniveaux[0].niveau);
-    this.service.filtreActive = {ascolaire:'2019/2020', types: this.types[0],
+    this.service.filtreActive = {ascolaire: '2019/2020', types: this.types[0],
         cycle: this.cycles[0], niveau: this.listniveaux[0].niveau, classe: ''};
   }
 
-  settFiltreActive(e){
+  settFiltreActive(e) {
     switch (e.id) {
       case 'types':
 
@@ -39,7 +39,7 @@ export class ChoixclassesComponent implements OnInit {
         break;
       case 'niveau':
         this.getactivelistniveau(e.value);
-        this.service.filtreActive.classe = "*";
+        this.service.filtreActive.classe = '*';
         break;
       case 'classe':
         this.service.filtreActive.classe = e.id;
@@ -47,7 +47,7 @@ export class ChoixclassesComponent implements OnInit {
     }
     this.service.filtreActive[e.id] = e.value;
   }
-  settFiltreActiveForDistribu(e){
+  settFiltreActiveForDistribu(e) {
       this.settFiltreActive(e);
       this.btnclick('');
   }

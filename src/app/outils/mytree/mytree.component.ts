@@ -9,7 +9,7 @@ import { MysettingsService } from 'src/app/services/mysettings.service';
 export class MytreeComponent implements OnInit {
   mytitle;
   @Input()
-    set title(v: string){
+    set title(v: string) {
       this.mytitle = v;
       this.ngOnInit();
     }

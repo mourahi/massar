@@ -10,10 +10,9 @@ export class MymodalComponent implements OnInit {
    constructor() { }
 
   ngOnInit() {
-    if (this.info == undefined){
-      this.info = {etat: '', message: ''}
+    if (this.info == undefined) {
+      this.info = {etat: '', message: ''};
     }
-    console.log("info",this.info);
 
   }
 

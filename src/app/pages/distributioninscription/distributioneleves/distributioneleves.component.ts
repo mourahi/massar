@@ -58,7 +58,7 @@ export class DistributionelevesComponent implements OnInit {
     this.mytab.indexActived = 0;
     this.indexTab(0);
   }
-  annulerDistribution(){
+  annulerDistribution() {
     if (this.service.filtreActive.classe.indexOf('-') > 0) {
       this.btnReDistribuTo(this.service.getIdFromNameNiveau());
     }

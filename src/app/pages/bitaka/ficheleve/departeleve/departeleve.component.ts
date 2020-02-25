@@ -15,7 +15,7 @@ export class DeparteleveComponent implements OnInit {
   ngOnInit(): void {
    this.filterdeparts();
   }
-  filterdeparts(){
+  filterdeparts() {
     this.departs = this.service.ListDeparts.filter(i => i.nmassar == this.eleve.nmassar);
     const myecole = this.service.ecole.gresa + '-' + this.service.ecole.name;
     this.departs.forEach(el => {
@@ -24,19 +24,19 @@ export class DeparteleveComponent implements OnInit {
     });
   }
 
-  save(ddep,drecp) {
+  save(ddep, drecp) {
     let msgerreur = '';
-    if (ddep == undefined || ddep == ''){
+    if (ddep == undefined || ddep == '') {
       msgerreur = ' المرجو ملء تاريخ المغادرة' + '<br>';
     }
-    if (drecp == undefined || drecp == ''){
+    if (drecp == undefined || drecp == '') {
       msgerreur += ' المرجو ملء تاريخ الالتحاق بالمؤسسة';
     }
-    if ( msgerreur !=''){
+    if ( msgerreur != '') {
       this.service.setsuspender({etat: 'no', message : msgerreur});
       return false;
     }
-    if (drecp > ddep){
+    if (drecp > ddep) {
       this.service.setsuspender({etat: 'no', message : 'تاريخ المغادرة يجب ان يكون اكبر من تاريخ الالتحاق بالمؤسسة'});
       return false;
     }
@@ -62,21 +62,21 @@ export class DeparteleveComponent implements OnInit {
   cancel() {
     this.service.setsuspender();
     const ld = this.departs.length;
-    if (ld > 0){
-      const dv = this.departs[ld-1];
+    if (ld > 0) {
+      const dv = this.departs[ ld - 1 ];
       const teste = dv.ascolaire == this.service.filtreActive.ascolaire  &&
        (dv.ecoledestination == '' ||
        dv.ecoledestination == this.service.ecole.gresa + '-' + this.service.ecole.name );
-      if (teste){
+      if (teste) {
       this.service.setsuspender({etat: 'ok', message: ''});
-      let r = this.service.ListDeparts.filter(i => i.nmassar == this.eleve.nmassar);
+      const r = this.service.ListDeparts.filter(i => i.nmassar == this.eleve.nmassar);
       this.service.ListDeparts = this.service.ListDeparts.filter(i => i.nmassar != this.eleve.nmassar);
       r.pop();
       if (r.length > 0) { this.service.ListDeparts = this.service.ListDeparts.concat(r);  }
       this.filterdeparts();
-      if (this.departs.length == 0){
+      if (this.departs.length == 0) {
         const l = this.service.ListSorties.filter(i => i.nmassar == this.eleve.nmassar);
-        if (l.length > 0){
+        if (l.length > 0) {
           this.changeSituation(l[l.length - 1].situation);
         } else {
           this.changeSituation('يزاول دراسته');

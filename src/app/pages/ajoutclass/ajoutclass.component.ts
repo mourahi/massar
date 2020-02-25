@@ -22,7 +22,7 @@ export class AjoutclassComponent implements OnInit {
 
 saved() {
   const  resultat = this.VerificationBeforeChangeClasses();
-  if( resultat.length > 0) {
+  if ( resultat.length > 0) {
     this.service.setsuspender({etat: 'err', message : resultat});
   } else {
     this.service.setsuspender({etat: 'ok', message : ''});

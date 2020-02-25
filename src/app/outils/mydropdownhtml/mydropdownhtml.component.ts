@@ -19,13 +19,13 @@ export class MydropdownhtmlComponent implements OnInit {
   title = '';
   showit = false;
   constructor(private service: MysettingsService) { }
-  hide(){
+  hide() {
     this.showit = false;
   }
   ngOnInit() {
     this.title = this.mydata[0].title;
   }
-  clicktitle(t){
+  clicktitle(t) {
     this.service.setsuspender();
     this.title = t;
     this.showit = false;

@@ -25,8 +25,7 @@ export class SortieeleveComponent implements OnInit {
     });
   }
 
-  save(){ // op==1 ==> اعادة الادماج  sinon = انقطاع
-
+  save() { // op==1 ==> اعادة الادماج  sinon = انقطاع
     this.service.setsuspender();
     this.service.ListSorties= this.service.ListSorties.filter(i => i.nmassar != this.eleve.nmassar);
     if ( this.tmp != undefined &&  this.tmp.length > 0) {
@@ -39,14 +38,14 @@ export class SortieeleveComponent implements OnInit {
 
 
   }
-  plus(op, dop){
+  plus(op, dop) {
     this.etat = op;
     const opera = op == 2 ? 'إنقطاع' : 'اعادة الادماج';
     this.tmp = JSON.parse(JSON.stringify(this.sorties));
     this.tmp.push({
       nmassar: this.eleve.nmassar,
       ascolaire: this.service.filtreActive.ascolaire,
-      ecoleorigine: this.service.ecole.gresa +'-'+ this.service.ecole.name,
+      ecoleorigine: this.service.ecole.gresa + '-' + this.service.ecole.name,
       niveau : this.service.getNiveauFormCla(this.eleve.cla),
       cla: this.eleve.cla,
       operation: opera,

@@ -14,7 +14,7 @@ export class InfoeleveComponent implements OnInit {
   save() {
     this.service.setsuspender({etat: 'ok', message: ''});
     this.service.ListEleves.forEach(element => {
-      if(element.n == this.eleve.n) {
+      if (element.n == this.eleve.n) {
         element = this.eleve;
         return false;
       }
