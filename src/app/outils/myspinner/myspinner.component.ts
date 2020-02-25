@@ -10,15 +10,15 @@ import { MysettingsService } from 'src/app/services/mysettings.service';
 export class MyspinnerComponent implements OnInit {
   suspender: Subscription ;
   etatshowit = false;
-  message;
+  info;
 
   constructor(private service: MysettingsService) {
       this.suspender = this.service.getsuspender().subscribe(s => {
           this.etatshowit = !this.etatshowit;
           setTimeout(() => {
             this.etatshowit = false;
-            if(s != undefined && s.length > 0) {
-              this.message = s;
+            if (s.etat != '') {
+              this.info = s;
               (document.getElementById('modalbutton') as HTMLElement).click();
             }
            }, 800);

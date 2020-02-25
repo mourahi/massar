@@ -13,7 +13,7 @@ export class MyboxComponent implements OnInit {
   constructor(private route: Router, private service: MysettingsService) { }
   ngOnInit() {}
   openDetails(p){
-    this.service.setsuspender('');
+    this.service.setsuspender();
     this.route.navigate([this.databox.path]);
   }
 

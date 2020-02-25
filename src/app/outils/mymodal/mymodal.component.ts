@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./mymodal.component.css']
 })
 export class MymodalComponent implements OnInit {
-@Input() message;
+@Input() info;
    constructor() { }
 
   ngOnInit() {

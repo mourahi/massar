@@ -48,7 +48,7 @@ export class DistributionelevesComponent implements OnInit {
     arrayItemChecked.forEach(x => {x.addcheck = false; });
     arrayItemChecked = arrayItemChecked.map(j => j.n).slice();
 
-    this.service.setsuspender('');
+    this.service.setsuspender();
     this.service.ListEleves.forEach(element => {
       if (arrayItemChecked.indexOf(element.n) > -1 ) {
         element.cla = v;

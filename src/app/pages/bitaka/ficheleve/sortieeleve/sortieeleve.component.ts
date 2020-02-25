@@ -27,7 +27,7 @@ export class SortieeleveComponent implements OnInit {
 
   save(){ // op==1 ==> اعادة الادماج  sinon = انقطاع
 
-    this.service.setsuspender('');
+    this.service.setsuspender();
     this.service.ListSorties= this.service.ListSorties.filter(i => i.nmassar != this.eleve.nmassar);
     if ( this.tmp != undefined &&  this.tmp.length > 0) {
       this.service.ListSorties = [...this.service.ListSorties  , ...this.tmp];
@@ -56,7 +56,7 @@ export class SortieeleveComponent implements OnInit {
 
   }
   cancel() {  // a completer par le sauvegarde
-    this.service.setsuspender('');
+    this.service.setsuspender();
     if (this.sorties.length > 0) {
       this.tmp = JSON.parse(JSON.stringify(this.sorties));
       this.tmp.pop();

@@ -22,25 +22,32 @@ export class DeparteleveComponent implements OnInit {
       if (el.ascolaire == '') { el.ascolaire = this.service.filtreActive.ascolaire; }
     });
   }
-  save(ddep) {
-    this.service.setsuspender('');
+
+  save(ddep,drecp) {
+    if (drecp == undefined || drecp == ''){
+      this.service.setsuspender({etat: 'no', message : 'المرجو ملء تاريخ الالتحاق بالمؤسسة'});
+      return false;
+    }
+
     this.service.ListDeparts.push({
       nmassar: this.eleve.nmassar,
       ascolaire: this.service.filtreActive.ascolaire,
       ecoleorigine: this.service.ecole.gresa + '-' + this.service.ecole.name ,
       ddepart: ddep,
-      ecoledestination:'',
+      ecoledestination: '',
       dreception: ''
     });
     this.filterdeparts();
     this.changeSituation('في طور التحويل');
+    this.service.setsuspender({etat: 'ok', message: ''});
   }
+
   changeSituation(v) {
     this.eleve.situation = v;
   }
 
   cancel() {
-    this.service.setsuspender('');
+    this.service.setsuspender();
     const ld = this.departs.length;
     if (ld > 0){
       const dv = this.departs[ld-1];
@@ -48,6 +55,7 @@ export class DeparteleveComponent implements OnInit {
        (dv.ecoledestination == '' ||
        dv.ecoledestination == this.service.ecole.gresa + '-' + this.service.ecole.name );
       if (teste){
+      this.service.setsuspender({etat: 'ok', message: ''});
       let r = this.service.ListDeparts.filter(i => i.nmassar == this.eleve.nmassar);
       this.service.ListDeparts = this.service.ListDeparts.filter(i => i.nmassar != this.eleve.nmassar);
       r.pop();

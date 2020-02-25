@@ -5,22 +5,32 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" [ngClass]="{'ok': message == 'ok', 'err': message != 'ok'}">
+      <div class="modal-header" [ngClass]="{
+          'ok': info.etat == 'ok',
+          'err': info.etat == 'err',
+          'no' : info.etat == 'no'
+      }">
         <h5 class="modal-title" id="exampleModalLabel">
-         <span *ngIf="message == 'ok'">معلومات</span>
-         <span *ngIf="message != 'ok'">خطأ</span>
+         <span *ngIf="info.etat == 'ok'">معلومات</span>
+         <span *ngIf="info.etat == 'err'">خطأ</span>
+         <span *ngIf="info.etat == 'no'">انذار</span>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       <span *ngIf="message == 'ok'" >لقد تم اجراء التغييرات بنجاح</span>
-       <span *ngIf="message != 'ok'" >لا يمكن اجراء التغيير على الاقسام التالية : {{message}}  نضراً لوجود روابط بينها وبين وحدات أخرى</span>
+       <span *ngIf="info.etat == 'ok'" >لقد تم اجراء التغييرات بنجاح</span>
+       <span *ngIf="info.etat == 'err'" >لا يمكن اجراء التغيير على الاقسام التالية : {{info.message}}  نضراً لوجود روابط بينها وبين وحدات أخرى</span>
+       <span *ngIf="info.etat == 'no'" >{{info.message}}</span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary"
-         data-dismiss="modal" [ngClass]="{'ok': message == 'ok', 'err': message != 'ok'}"
+         data-dismiss="modal" [ngClass]="{
+            'ok': info.etat == 'ok',
+            'err': info.etat == 'err',
+            'no' : info.etat == 'no'
+        }"
          >اغلاق</button>
       </div>
     </div>

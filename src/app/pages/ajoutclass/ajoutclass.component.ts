@@ -23,9 +23,9 @@ export class AjoutclassComponent implements OnInit {
 saved() {
   const  resultat = this.VerificationBeforeChangeClasses();
   if( resultat.length > 0) {
-    this.service.setsuspender(resultat);
+    this.service.setsuspender({etat: 'err', message : resultat});
   } else {
-    this.service.setsuspender('ok');
+    this.service.setsuspender({etat: 'ok', message : ''});
     this.service.myClasses = JSON.parse(JSON.stringify(this.myStructure));
     this.mychild.ngOnInit();
   }

@@ -12,7 +12,7 @@ export class InfoeleveComponent implements OnInit {
 
   ngOnInit(): void {}
   save() {
-    this.service.setsuspender('ok');
+    this.service.setsuspender({etat: 'ok', message: ''});
     this.service.ListEleves.forEach(element => {
       if(element.n == this.eleve.n) {
         element = this.eleve;
@@ -22,7 +22,7 @@ export class InfoeleveComponent implements OnInit {
   }
 
   onFileChanged(event) { // called each time file input changes
-    this.service.setsuspender('');
+    this.service.setsuspender();
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]); // read file as data url

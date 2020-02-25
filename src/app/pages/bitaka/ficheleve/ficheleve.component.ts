@@ -13,7 +13,7 @@ export class FicheleveComponent implements OnInit {
   eleve;
   itab;
   constructor(private route: ActivatedRoute, private service: MysettingsService) {
-    this.service.setsuspender('');
+    this.service.setsuspender();
    }
 
   ngOnInit(): void {

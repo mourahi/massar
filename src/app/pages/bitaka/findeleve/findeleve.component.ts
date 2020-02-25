@@ -15,7 +15,7 @@ export class FindeleveComponent implements OnInit {
     this.itemsSmartTableLink = this.service.itemsSmartTableLink;
   }
   btnclick(params){
-    this.service.setsuspender('');
+    this.service.setsuspender();
     if (params.nmassar != '') {
       this.dataeleve = this.service.ListEleves.filter(i => i.nmassar == params.nmassar );
     }

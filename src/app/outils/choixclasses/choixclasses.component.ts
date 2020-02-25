@@ -58,7 +58,7 @@ export class ChoixclassesComponent implements OnInit {
   }
   btnclick(v) { // v = save or find
     if (v != 'save') {
-      this.service.setsuspender('');
+      this.service.setsuspender();
     }
     this.save.emit(null);
   }

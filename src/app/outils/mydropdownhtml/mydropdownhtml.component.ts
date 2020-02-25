@@ -26,7 +26,7 @@ export class MydropdownhtmlComponent implements OnInit {
     this.title = this.mydata[0].title;
   }
   clicktitle(t){
-    this.service.setsuspender('');
+    this.service.setsuspender();
     this.title = t;
     this.showit = false;
   }

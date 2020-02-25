@@ -327,15 +327,15 @@ export class MysettingsService {
  constructor() {}
 
 
-suspender = new Subject<string>();
-getsuspender(): Observable<string> {
+suspender = new Subject<{etat: string, message: string}>();
+getsuspender(): Observable<{etat: string, message: string}> {
   return this.suspender.asObservable();
 }
-setsuspender(v: string) {
+setsuspender(v: {etat: string, message: string} = {etat: '', message: ''}) {
   this.suspender.next(v);
 }
 
-  getNiveauFormCla(cla){
+  getNiveauFormCla(cla) {
     let r = '';
     cla = cla.indexOf('-') < 0 ? cla : cla.split('-')[0];
     this.myClasses.forEach(element => {

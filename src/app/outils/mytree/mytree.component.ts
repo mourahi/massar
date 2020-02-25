@@ -23,8 +23,8 @@ export class MytreeComponent implements OnInit {
   }
 
   showsubmenu(i, ex) {
-    if (ex == undefined){ this.service.setsuspender(''); }
-    if (i === this.sho) {
+    if (ex == undefined) { this.service.setsuspender(); }
+    if (i  == this.sho) {
     if (ex != undefined) {
       this.sho = -1; }
     } else {
@@ -33,7 +33,7 @@ export class MytreeComponent implements OnInit {
   }
   clicksubmenu(j) {
     this.subsho = j;
-    this.service.setsuspender('');
+    this.service.setsuspender();
   }
 
 }
