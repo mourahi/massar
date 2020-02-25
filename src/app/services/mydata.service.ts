@@ -49,6 +49,13 @@ export class MydataService {
       });
     return subject.asObservable();
   }
+  getMyRedondance(): Observable<any>  {
+    const subject = new Subject<string>();
+    this.http.get(this.getMyURL(6)).subscribe(x => {
+         subject.next(this.preparemyjson(x));
+      });
+    return subject.asObservable();
+  }
   private preparemyjson(d): any {
       let titenamesarray = new Array();
       let titlenames = {};

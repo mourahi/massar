@@ -48,7 +48,12 @@ getListEleves() {
       const scolarities = this.service.getMyScolarite();
       scolarities.subscribe( as => {
         this.settings.ListScolarities = as;
-
+        console.log('scolarities chargé depuis internet re= ', as);
+      });
+      const redondances = this.service.getMyRedondance();
+      redondances.subscribe( fs => {
+        this.settings.ListRedondances = fs;
+        console.log('Redondance chargé depuis internet re= ', fs);
       });
     });
   });

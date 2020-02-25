@@ -323,6 +323,7 @@ export class MysettingsService {
   ListDeparts;
   ListSorties;
   ListScolarities;
+  ListRedondances;
 
  constructor() {}
 
@@ -490,7 +491,7 @@ switch (key) {
         {name: 'المسك الاولي', icon: 'fa-edit', extension: [
          {name: 'اضافة التلاميذ', icon: '' ,  path: ''},
          {name: 'استيراد و تصدير بيانات التلاميذ', icon: '' ,  path: ''},
-         {name: 'لائحة التلاميذ', icon: '' ,  path: ''}
+         {name: 'لائحة التلاميذ', icon: '' ,  path: 'prelisteleve'}
         ]},
         {name: 'قرار اخر السنة', icon: 'fa-graduation-cap', extension: [
          {name: 'لائحة النتائج', icon: '' ,  path: ''},

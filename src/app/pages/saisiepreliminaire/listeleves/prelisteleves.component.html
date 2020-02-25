@@ -1,0 +1,26 @@
+<p>listeleves works!</p>
+<h4>لائحة تلاميذ المؤسسة </h4>
+<app-choixclasses [choixSelect]="1" (save)="showfilterclass($event)"></app-choixclasses>
+
+<!-- ICI TABS-->
+<div [hidden]="showtable">
+  <div class="card">
+    <div class="card-body" >
+<app-mytab [myarray]="arraytab"  (indexTab)="indexTab($event)" ></app-mytab>
+
+
+<app-smarttable [data]="dataeleves"
+[newKeysnames]="{
+  addcheck:'addcheck',
+  nmassar: 'رقم التلميذ',
+  nom: 'النسب بالفرنسية',
+  prenom :'الاسم بالفرنسية',
+  arnom : 'النسب بالعربية',
+  arprenom:'الاسم بالعربية',
+  genre: 'النوع',
+  dnaissance: 'تاريخ الازدياد'
+  }"
+[maxview]="20"></app-smarttable>
+    </div>
+  </div>
+</div>

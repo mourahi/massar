@@ -21,6 +21,7 @@ export class SortieeleveComponent implements OnInit {
     const myecole = this.service.ecole.gresa + '-' + this.service.ecole.name;
     this.sorties.forEach(el => {
       if (el.ecoleorigine == '') { el.ecoleorigine = myecole; }
+      if (el.cla == '') { el.cla = this.eleve.cla; }
       if (el.niveau == '') { el.niveau = this.service.getNiveauFormCla(el.cla); }
     });
   }
