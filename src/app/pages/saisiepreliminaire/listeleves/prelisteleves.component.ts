@@ -25,15 +25,16 @@ export class PrelistelevesComponent implements OnInit {
     console.log('data', this.dataeleves);
   }
   delete() {
+    const el = this.dataeleves.filter(j => j['addcheck'] == true).map(jj => jj.n);
+    if (el.length > 0) {
     if (this.index == 0) { // suppriemr eleve depuis ListEleves (en attente verification note)
-      const el = this.dataeleves.filter(j => j['addcheck'] == true).map(jj => jj.n);
-
-      if (el.length > 0) {
-        this.service.setsuspender({etat : 'ok', message : 'لقد تم الحذف بنجاح'})
         this.service.ListEleves = this.service.ListEleves.filter(i => el.indexOf(i.n) < 0);
         this.data = this.service.ListEleves;
-        this.showfilterclass(null);
+      } else {
+        this.service.ListRedondances = this.service.ListRedondances.filter(k => el.indexOf(k.n) < 0);
       }
+    this.showfilterclass(null);
+    this.service.setsuspender({etat : 'ok', message : 'لقد تم الحذف بنجاح'});
     }
   }
 

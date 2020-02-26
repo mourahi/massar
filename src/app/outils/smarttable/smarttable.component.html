@@ -22,6 +22,7 @@
   </thead>
   <tbody>
     <!-- affichage valeur -->
+
     <tr *ngFor="let item of dataviewed" >
       <td *ngFor="let k of keystoshow" [ngSwitch]="true">
         <span *ngIf="k != 'hide'" >
