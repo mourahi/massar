@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MysettingsService } from 'src/app/services/mysettings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-prelisteleves',
@@ -14,7 +15,7 @@ export class PrelistelevesComponent implements OnInit {
   index = 0;
   showtable = false;
 
-  constructor(private service: MysettingsService) { }
+  constructor(private service: MysettingsService, private route: Router) { }
   ngOnInit() {
       this.data = this.service.ListEleves;
       this.service.filtreActive.niveau = this.service.myClasses[0].niveau ;
@@ -23,6 +24,10 @@ export class PrelistelevesComponent implements OnInit {
   }
   correct() {
     console.log('data', this.dataeleves);
+    const num = this.dataeleves.filter(k => k.addcheck == true).map(kk => kk.n);
+    if (num.length == 1){
+      this.route.navigate(['/correctposition', (num[0] as string)]);
+    }
   }
   delete() {
     const el = this.dataeleves.filter(j => j['addcheck'] == true).map(jj => jj.n);

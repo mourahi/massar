@@ -10,6 +10,7 @@ import { AnomalienationnaliteComponent } from './pages/anomalies/anomalienationn
 import { FicheleveComponent } from './pages/bitaka/ficheleve/ficheleve.component';
 import { FindeleveComponent } from './pages/bitaka/findeleve/findeleve.component';
 import { PrelistelevesComponent } from './pages/saisiepreliminaire/listeleves/prelisteleves.component';
+import { CorrectpositionComponent } from './pages/saisiepreliminaire/correctposition/correctposition.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'anomalienationalite', component: AnomalienationnaliteComponent},
   {path: 'ficheeleve/:n', component: FicheleveComponent},
   {path: 'findeleve', component: FindeleveComponent},
-  {path: 'prelisteleve', component: PrelistelevesComponent}
+  {path: 'prelisteleve', component: PrelistelevesComponent},
+  {path: 'correctposition/:n', component: CorrectpositionComponent}
 
 ];
 

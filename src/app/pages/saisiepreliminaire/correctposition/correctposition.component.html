@@ -1,0 +1,54 @@
+<p>correctposition works!</p>
+
+<div class="card">
+  <div class="card-body" >
+<app-smarttable [data]="dataeleves" (trSelected)="trSelected($event)" [activeColorTr]="true"
+[newKeysnames]="{
+  nmassar: 'رقم التلميذ',
+  nom: 'النسب بالفرنسية',
+  prenom :'الاسم بالفرنسية',
+  arnom : 'النسب بالعربية',
+  arprenom:'الاسم بالعربية',
+  genre: 'النوع',
+  dnaissance: 'تاريخ الازدياد',
+  etat: 'الوضعية',
+  ecoleorigine:'المؤسسة',
+  niveau :'المستوى',
+  cla :'القسم'
+  }"
+[maxview]="20"></app-smarttable>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body" >
+    <div class="row">
+      <div class="col-md-6 form-group">
+          <label>الاسم  العائلي بالعربية :</label>
+          <input class="form-control" type="text" [value]="eleve.arnom" >
+      </div>
+      <div class="col-md-6 form-group">
+          <label>الاسم  الشخصي بالعربية :</label>
+          <input  class="form-control"   type="text"  [value]="eleve.arprenom" >
+      </div>
+
+      <div class="col-md-6 form-group">
+          <label>الإسم بالفرنسية :</label>
+          <input class="form-control"    type="text"  [value]="eleve.nom" >
+      </div>
+      <div class="col-md-6 form-group">
+          <label>النسب بالفرنسية :</label>
+          <input class="form-control" type="text" [value]="eleve.prenom" >
+      </div>
+      <div class="col-md-6 form-group">
+            <label>تاريخ الازدياد :</label>
+            <input class="form-control" type="text" [value]="eleve.dnaissance"  >
+      </div>
+
+      <div class="col-md-6 mt-25">
+            <label class="radio control-label">النوع :</label>
+            <input type="radio" name='g'  value="ذكر"> ذكر
+            <input type="radio" name='g'   value="أنثى"> انثى
+      </div>
+  </div>
+  </div>
+</div>

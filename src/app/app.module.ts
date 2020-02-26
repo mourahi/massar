@@ -37,6 +37,7 @@ import { SortieeleveComponent } from './pages/bitaka/ficheleve/sortieeleve/sorti
 import { AppuieleveComponent } from './pages/bitaka/ficheleve/appuieleve/appuieleve.component';
 import { FindeleveComponent } from './pages/bitaka/findeleve/findeleve.component';
 import { PrelistelevesComponent } from './pages/saisiepreliminaire/listeleves/prelisteleves.component';
+import { CorrectpositionComponent } from './pages/saisiepreliminaire/correctposition/correctposition.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,8 @@ import { PrelistelevesComponent } from './pages/saisiepreliminaire/listeleves/pr
     SortieeleveComponent,
     AppuieleveComponent,
     FindeleveComponent,
-    PrelistelevesComponent
+    PrelistelevesComponent,
+    CorrectpositionComponent
   ],
   imports: [
     BrowserModule,

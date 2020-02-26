@@ -23,8 +23,8 @@
   <tbody>
     <!-- affichage valeur -->
 
-    <tr *ngFor="let item of dataviewed" >
-      <td *ngFor="let k of keystoshow" [ngSwitch]="true">
+    <tr *ngFor="let item of dataviewed; let i = index" (click) ="trclicked(i)">
+      <td *ngFor="let k of keystoshow" [ngSwitch]="true" [ngClass]="{'bggr' : iTrSelected ==i}">
         <span *ngIf="k != 'hide'" >
         <span *ngSwitchCase="datakeys[k]['input'] != undefined" >
           <input type="text" [value]="item[k]" (change)="inputchange($event,item,k)" >

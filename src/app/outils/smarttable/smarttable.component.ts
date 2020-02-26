@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-smarttable',
@@ -9,6 +10,7 @@ export class SmarttableComponent implements OnInit {
   mydata;
   @Input() maxview;
   @Input() newKeysnames;
+  @Input() activeColorTr = false;
   @Input()
      set data(data) {
           if (data !== undefined) {
@@ -16,7 +18,7 @@ export class SmarttableComponent implements OnInit {
           this.ngOnInit();
          }
      }
-
+ @Output() trSelected = new EventEmitter<any>();
    datakeys;
    clickedkey;
    numpage;
@@ -27,8 +29,13 @@ export class SmarttableComponent implements OnInit {
    keystoshow;
    debut;
    fin;
-
+   iTrSelected;
    constructor() { }
+   trclicked(i){
+      this.iTrSelected = this.activeColorTr ? i : -1;
+      this.trSelected.emit(this.dataviewed[i]);
+   }
+
    ngOnInit() {
       // this.mydata = [{name: 'adil', age: 40}, {name: 'saida', age: 30}];
       // this.newKeysnames = {name: 'اسم'};
