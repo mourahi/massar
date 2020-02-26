@@ -3,19 +3,7 @@
 <div class="card">
   <div class="card-body" >
 <app-smarttable [data]="dataeleves" (trSelected)="trSelected($event)" [activeColorTr]="true"
-[newKeysnames]="{
-  nmassar: 'رقم التلميذ',
-  nom: 'النسب بالفرنسية',
-  prenom :'الاسم بالفرنسية',
-  arnom : 'النسب بالعربية',
-  arprenom:'الاسم بالعربية',
-  genre: 'النوع',
-  dnaissance: 'تاريخ الازدياد',
-  etat: 'الوضعية',
-  ecoleorigine:'المؤسسة',
-  niveau :'المستوى',
-  cla :'القسم'
-  }"
+[newKeysnames]="titles"
 [maxview]="20"></app-smarttable>
   </div>
 </div>
@@ -45,10 +33,24 @@
       </div>
 
       <div class="col-md-6 mt-25">
-            <label class="radio control-label">النوع :</label>
-            <input type="radio" name='g'  value="ذكر"> ذكر
-            <input type="radio" name='g'   value="أنثى"> انثى
+        <label for="myselect">الجنس : </label>
+        <select class="form-control"  id='types'  >
+          <option value="ذكر" >ذكر</option>
+          <option value="انثى" >انثى</option>
+        </select>
       </div>
+      <div class="col-md-6 form-group">
+        <label>المستوى :</label>
+        <label class="form-control bggray" type="text"  >{{eleve.niveau}}</label>
+    </div>
+    <div class="col-md-6 form-group">
+          <label>القسم :</label>
+          <label class="form-control bggray" type="text"  >{{ eleve.cla }}</label>
+    </div>
+  </div>
+  <div class="mybtn">
+    <button  class="btn-primary ml-1" > الحفظ </button>
+    <button  class="btn-primary" > المصادقة </button>
   </div>
   </div>
 </div>

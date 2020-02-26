@@ -23,7 +23,6 @@ export class PrelistelevesComponent implements OnInit {
       this.showfilterclass(false);
   }
   correct() {
-    console.log('data', this.dataeleves);
     const num = this.dataeleves.filter(k => k.addcheck == true).map(kk => kk.n);
     if (num.length == 1){
       this.route.navigate(['/correctposition', (num[0] as string)]);
