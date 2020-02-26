@@ -21,9 +21,20 @@ export class PrelistelevesComponent implements OnInit {
      // this.indexTab(0);
       this.showfilterclass(false);
   }
-  correct(){
-    console.log("data",this.dataeleves);
+  correct() {
+    console.log('data', this.dataeleves);
+  }
+  delete() {
+    if (this.index == 0) { // suppriemr eleve depuis ListEleves (en attente verification note)
+      const el = this.dataeleves.filter(j => j['addcheck'] == true).map(jj => jj.n);
 
+      if (el.length > 0) {
+        this.service.setsuspender({etat : 'ok', message : 'لقد تم الحذف بنجاح'})
+        this.service.ListEleves = this.service.ListEleves.filter(i => el.indexOf(i.n) < 0);
+        this.data = this.service.ListEleves;
+        this.showfilterclass(null);
+      }
+    }
   }
 
   showfilterclass(e) {
@@ -44,13 +55,15 @@ export class PrelistelevesComponent implements OnInit {
   filterdata() {
     const id = this.service.getIdFromNameNiveau();
     const ac = this.service.filtreActive.classe;
+    const etatAC = ac.length < 2;
+
     let index = JSON.parse(JSON.stringify(this.data));
-    index = ac.length < 2  ? index.filter(ii => (ii.cla as string).startsWith(id)) :
+    index = etatAC ? index.filter(ii => (ii.cla as string).startsWith(id)) :
          index.filter(ii => (ii.cla === ac));
     const d =  JSON.parse(JSON.stringify(this.service.ListRedondances));
-    const index1 = d.filter(r => r.etat == 'مؤسسة' && r.cla.startsWith(id) );
-    const index2 = d.filter(r => r.etat == 'مديرية' && r.cla.startsWith(id)  );
-    const index3 = d.filter(r => r.etat == 'ملغى' && r.cla.startsWith(id)  );
+    const index1 = d.filter(r => r.etat == 'مؤسسة' && (etatAC ? r.cla.startsWith(id) : r.cla == ac) );
+    const index2 = d.filter(r => r.etat == 'مديرية' && (etatAC ? r.cla.startsWith(id) : r.cla == ac) );
+    const index3 = d.filter(r => r.etat == 'ملغى' && (etatAC ? r.cla.startsWith(id) : r.cla == ac) );
     switch (this.index) {
       case 1:
         this.dataeleves = index1;

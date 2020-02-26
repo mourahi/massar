@@ -10,7 +10,8 @@
 
 <button [hidden]="index != 1"  class="btn-primary" (click)="correct()"
 style="padding:5px; margin:5px;" > تصحيح وضعية المكررين <i class="fa fa-edit" ></i></button>
-
+<button  class="btn-primary" (click)="delete()"
+style="padding:5px; margin:5px;" > حذف <i class="far fa-trash-alt"></i></button>
 <div class="clearfix"></div>
 
 <app-smarttable [data]="dataeleves"
