@@ -15,6 +15,11 @@ export class SaisieelevesComponent implements OnInit {
     this.service.filtreActive.classe = this.service.getlistNumClasses()[0].numero;
     this.showfilterclass();
   }
+  save() {
+    console.log('dataeleve:', this.dataeleves);
+
+  }
+
   showfilterclass() {
     if (this.service.filtreActive.classe == '*') {
       this.service.filtreActive.classe = this.service.getlistNumClasses()
