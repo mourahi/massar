@@ -38,6 +38,7 @@ import { AppuieleveComponent } from './pages/bitaka/ficheleve/appuieleve/appuiel
 import { FindeleveComponent } from './pages/bitaka/findeleve/findeleve.component';
 import { PrelistelevesComponent } from './pages/saisiepreliminaire/listeleves/prelisteleves.component';
 import { CorrectpositionComponent } from './pages/saisiepreliminaire/correctposition/correctposition.component';
+import { SaisieelevesComponent } from './pages/saisiepreliminaire/saisieeleves/saisieeleves.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +74,8 @@ import { CorrectpositionComponent } from './pages/saisiepreliminaire/correctposi
     AppuieleveComponent,
     FindeleveComponent,
     PrelistelevesComponent,
-    CorrectpositionComponent
+    CorrectpositionComponent,
+    SaisieelevesComponent
   ],
   imports: [
     BrowserModule,

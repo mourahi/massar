@@ -1,0 +1,27 @@
+<p>saisieeleves works!</p>
+<app-choixclasses [choixSelect]="5" (save)="showfilterclass()"></app-choixclasses>
+
+<div class="clearfix"></div>
+<div class="card">
+  <div class="card-body" >
+
+  <button  class="btn-primary m-1 mr-5 p-1 " > حفظ <i class="fa fa-save" ></i></button>
+  <button  class="btn-primary p-1 mb-2" > حذف <i class="far fa-trash-alt"></i></button>
+<app-smarttable
+[data]="dataeleves" [maxview]="20"
+[newKeysnames]="{
+  addcheck: 'addcheck',
+  nmassar:'رقم التلميذ',
+  nom : {input: 'النسب بالفرنسية'},
+  prenom : {input: 'الاسم بالفرنسية'},
+  arnom : {input: 'النسب بالعربية'},
+  arprenom : {input: 'الاسم بالعربية'},
+  genre: {input: 'النوع'},
+  dnaissance: {input: 'تاريخ الازدياد'},
+  arlieunaissance : {input: 'مكان الازدياد بالعربية'},
+  lieunaissance : {input: 'مكان الازدياد بالفرنسية'},
+  arrivede : {input: 'جاء من'},
+  coutry : {input: 'الدولة'}}">
+</app-smarttable>
+  </div>
+</div>

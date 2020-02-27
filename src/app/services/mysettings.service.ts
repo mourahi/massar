@@ -489,7 +489,7 @@ switch (key) {
          {name: 'مجمل الحجرات', icon: '' ,  path: ''}
         ]},
         {name: 'المسك الاولي', icon: 'fa-edit', extension: [
-         {name: 'اضافة التلاميذ', icon: '' ,  path: ''},
+         {name: 'اضافة التلاميذ', icon: '' ,  path: 'saisieeleves'},
          {name: 'استيراد و تصدير بيانات التلاميذ', icon: '' ,  path: ''},
          {name: 'لائحة التلاميذ', icon: '' ,  path: 'prelisteleve'}
         ]},
