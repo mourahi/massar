@@ -23,6 +23,7 @@ export class ReinscriptionComponent implements OnInit {
       this.itemsSmartTableCheck = this.service.itemsSmartTableCheck;
       this.data = this.service.ListEleves;
       this.service.filtreActive.niveau = this.service.myClasses[0].niveau ;
+      this.service.filtreActive.classe = '*';
      // this.indexTab(0);
       this.showfilterclass(false);
   }

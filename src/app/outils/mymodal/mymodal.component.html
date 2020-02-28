@@ -20,7 +20,9 @@
         <span *ngIf="info.message == ''">لقد تم اجراء التغييرات بنجاح</span>
         <span *ngIf="info.message != ''">{{info.message}}</span>
         </span>
-       <span *ngIf="info.etat == 'err'" >لا يمكن اجراء التغيير على الاقسام التالية : {{info.message}}  نضراً لوجود روابط بينها وبين وحدات أخرى</span>
+       <span *ngIf="info.etat == 'err' && info.message == ''" >لا يمكن اجراء التغيير على الاقسام التالية : {{info.message}}  نضراً لوجود روابط بينها وبين وحدات أخرى</span>
+       <span *ngIf="info.etat == 'err' && info.message != ''"  [innerHTML]="info.message"></span>
+
        <span *ngIf="info.etat == 'no'" [innerHTML]="info.message" ></span>
       </div>
       <div class="modal-footer">

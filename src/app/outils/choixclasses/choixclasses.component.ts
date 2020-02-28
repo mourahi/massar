@@ -26,10 +26,13 @@ export class ChoixclassesComponent implements OnInit {
     this.listniveaux = this.service.myClasses.slice();
     this.getactivelistniveau(this.listniveaux[0].niveau);
     this.service.filtreActive = {ascolaire: '2019/2020', types: this.types[0],
-        cycle: this.cycles[0], niveau: this.listniveaux[0].niveau, classe: ''};
+        cycle: this.cycles[0], niveau: this.listniveaux[0].niveau,
+        classe: ''};
   }
 
   settFiltreActive(e) {
+    console.log("avant, class",e,this.service.filtreActive.classe);
+
     switch (e.id) {
       case 'types':
 
@@ -42,10 +45,10 @@ export class ChoixclassesComponent implements OnInit {
         this.service.filtreActive.classe = '*';
         break;
       case 'classe':
-        this.service.filtreActive.classe = e.id;
-
+        this.service.filtreActive.classe = e.value;
     }
     this.service.filtreActive[e.id] = e.value;
+    console.log("avant, class ",e,this.service.filtreActive.classe );
   }
   settFiltreActiveForDistribu(e) {
       this.settFiltreActive(e);
@@ -54,6 +57,8 @@ export class ChoixclassesComponent implements OnInit {
 
 
   getactivelistniveau(v) {
+    console.log("niveau v = ",v);
+
     this.listnumerosclasses = this.service.listNumClasses.filter(i => i.niveau == v).slice();
   }
   btnclick(v) { // v = save or find

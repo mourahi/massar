@@ -24,7 +24,7 @@ export class DistributionelevesComponent implements OnInit {
     this.data = this.service.ListEleves.slice();
     this.indexTab(0);
     this.service.filtreActive.niveau = this.service.myClasses[0].niveau;
-    this.service.filtreActive.classe = this.service.getIdFromNameNiveau();
+    //this.service.filtreActive.classe = '*';
     this.showfilterclass();
   }
 

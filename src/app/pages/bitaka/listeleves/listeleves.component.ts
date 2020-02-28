@@ -20,6 +20,7 @@ export class ListelevesComponent implements OnInit {
       this.itemsSmartTableLink = this.service.itemsSmartTableLink;
       this.data = this.service.ListEleves;
       this.service.filtreActive.niveau = this.service.myClasses[0].niveau ;
+      this.service.filtreActive.classe = '*';
      // this.indexTab(0);
       this.showfilterclass(false);
   }
@@ -40,6 +41,8 @@ export class ListelevesComponent implements OnInit {
   filterdata() {
     const id = this.service.getIdFromNameNiveau();
     const ac = this.service.filtreActive.classe;
+    console.log("id,ac=",id,ac);
+
     let d = JSON.parse(JSON.stringify(this.data));
     d = ac.length < 2  ? d.filter(ii => (ii.cla as string).startsWith(id)) :
          d.filter(ii => (ii.cla === ac));
