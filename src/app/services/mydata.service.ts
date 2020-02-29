@@ -81,7 +81,8 @@ export class MydataService {
         let i = 0;
         v.forEach(el => {
           const kk = el.split(':');
-          oo[titlenames[kk[0].trim()]] =  kk[1] == undefined ? '' :  kk[1].trim();
+          oo[titlenames[kk[0].trim()]] =  kk[1] == undefined ? '' :
+                  ( titlenames[kk[0].trim()] == 'dnaissance' ? kk[1].trim().replace(/\//g , '-') :  kk[1].trim() );
           i += 1;
         });
         titenamesarray.forEach( f => {

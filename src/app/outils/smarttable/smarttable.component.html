@@ -27,7 +27,8 @@
       <td *ngFor="let k of keystoshow" [ngSwitch]="true" [ngClass]="{'bggr' : iTrSelected ==i}">
         <span *ngIf="k != 'hide'" >
         <span *ngSwitchCase="datakeys[k]['input'] != undefined" >
-          <input type="text" [value]="item[k]" (change)="inputchange($event,item,k)" >
+          <input *ngIf="datakeys[k]['type'] == undefined"  type="text" [value]="item[k]" (change)="inputchange($event,item,k)" >
+          <input *ngIf="datakeys[k]['type'] == 'date'"  type="date" [value]="item[k]" (change)="inputchange($event,item,k)" >
         </span>
         <span *ngSwitchCase="k =='addcheck'" >
           <input type="checkbox" (change)="item[k] = !item[k];checkone($event.target.checked)"

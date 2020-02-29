@@ -73,7 +73,7 @@ export class SaisieelevesComponent implements OnInit {
   showfilterclass() {
     if (this.service.filtreActive.classe == '*') {
       this.service.filtreActive.classe = this.service.getlistNumClasses()
-         .filter(c => c.niveau = this.service.filtreActive.niveau)[0].numero;
+         .filter(c => c.niveau == this.service.filtreActive.niveau)[0].numero;
    }
 
     const d = this.service.ListEleves.filter(i => i.cla == this.service.filtreActive.classe);
