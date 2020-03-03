@@ -1,0 +1,25 @@
+<input type="text" [(ngModel)]="selecteday"  (keyup)="todate($event)" (focusout)="showit = false" (focus) ="showit = true"  >
+<table [hidden] = "!showit" class="tabledate" >
+  <thead>
+    <tr>
+      <th class="bt"> <a (click)="nextmois(true)"> << </a> </th>
+      <th colspan="5" class="cbt"> {{ themonth }}  </th>
+      <th class="bt"> <a  (click)="nextmois(false)">  >> </a>  </th>
+    </tr>
+  <tr>
+    <th>ح</th>
+    <th>ن</th>
+    <th>ث</th>
+    <th>ع</th>
+    <th>خ</th>
+    <th>ج</th>
+    <th>س</th>
+  </tr>
+</thead>
+  <tr *ngFor="let item of dataview; let i = index" >
+    <td *ngFor="let v of item " [ngClass]="{ 'now': v.now == true, 'new' : v.new }" (mousedown)="changedate(v)" >
+     <a>{{v.j}} </a>
+    </td>
+  </tr>
+</table>
+

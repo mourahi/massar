@@ -1,0 +1,38 @@
+
+th,td, .bt{
+  width: 30px;
+  height: 30px;
+  color: rgb(156, 156, 156);
+}
+th, td, .bt, .cbt{
+  text-align: center;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+th{
+  color: black;
+}
+.now{
+color:rgb(63, 63, 63);
+background-color:#ffdb99;
+border-color:#ffb733;
+}
+
+.new{
+  color: #333;
+}
+td:hover, .bt:hover, .cbt:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.tabledate{
+  position : absolute;
+  bottom: 30px;
+  left: 0;
+  background-color: white;
+  border:2px solid transparent;
+  z-index: 3000;
+}

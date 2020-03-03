@@ -39,6 +39,7 @@ import { FindeleveComponent } from './pages/bitaka/findeleve/findeleve.component
 import { PrelistelevesComponent } from './pages/saisiepreliminaire/listeleves/prelisteleves.component';
 import { CorrectpositionComponent } from './pages/saisiepreliminaire/correctposition/correctposition.component';
 import { SaisieelevesComponent } from './pages/saisiepreliminaire/saisieeleves/saisieeleves.component';
+import { MydatepickerComponent } from './outils/mydatepicker/mydatepicker.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +76,8 @@ import { SaisieelevesComponent } from './pages/saisiepreliminaire/saisieeleves/s
     FindeleveComponent,
     PrelistelevesComponent,
     CorrectpositionComponent,
-    SaisieelevesComponent
+    SaisieelevesComponent,
+    MydatepickerComponent
   ],
   imports: [
     BrowserModule,
