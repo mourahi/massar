@@ -1,4 +1,6 @@
-<input type="text" [(ngModel)]="selecteday"  (keyup)="todate($event)" (focusout)="showit = false" (focus) ="showit = true"  >
+<div style="position: relative;">
+<input type="text" [(ngModel)]="selecteday"
+ (keyup)="todate($event)" (focusout)="showit = false" (focus) ="showit = true"  >
 <table [hidden] = "!showit" class="tabledate" >
   <thead>
     <tr>
@@ -22,4 +24,4 @@
     </td>
   </tr>
 </table>
-
+</div>

@@ -1,5 +1,5 @@
 
-<table class=" table table-striped" style="z-index: 200;">
+<table class=" table table-striped">
   <thead>
     <tr>
       <th scope="col" *ngFor="let key of keystoshow; let i = index"
@@ -29,7 +29,7 @@
         <span *ngSwitchCase="datakeys[k]['input'] != undefined" >
           <input *ngIf="datakeys[k]['type'] == undefined"  type="text" [value]="item[k]" (change)="inputchange($event,item,k)" >
          <!--   <input *ngIf="datakeys[k]['type'] == 'date'"  type="date" [value]="item[k]" (change)="inputchange($event,item,k)" >-->
-        <span *ngIf="datakeys[k]['type'] == 'date'" style="position: relative;" >
+        <span *ngIf="datakeys[k]['type'] == 'date'" >
           <app-mydatepicker [data] = "item[k]" (dateChange)="inputchange($event,item,k)" ></app-mydatepicker>
         </span>
         </span>

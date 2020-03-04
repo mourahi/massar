@@ -71,7 +71,10 @@ export class MydatepickerComponent implements OnInit {
   }
 
 
- todate(e){
+ todate(e) {
+  const rect = e.getBoundingClientRect();
+  console.log(rect.top, rect.right, rect.bottom, rect.left);
+
   const validkey = ['0','1','2','3','4','5','6','7','8','9', '/'];
   if (validkey.indexOf(e.key) > -1) {
   const r = (e.target.value as string).split('/').filter( i => i != '');
