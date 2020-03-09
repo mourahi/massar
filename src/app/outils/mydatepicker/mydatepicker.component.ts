@@ -11,7 +11,7 @@ export class MydatepickerComponent implements OnInit {
     console.log("data, +r[2], +r[1], +r[0] ",data,r[2], r[1], r[0]);
 
     this.element = data == '' ? new Date() : new Date(+r[2], +r[1], +r[0]);
-    this.selecteday = this.element.getDate() + '/'+ (+this.element.getMonth() + 1) + '/' + this.element.getFullYear();
+    this.selecteday = this.element.getDate() + '/'+ (+this.element.getMonth()) + '/' + this.element.getFullYear();
 
 
 
@@ -53,12 +53,12 @@ export class MydatepickerComponent implements OnInit {
     }
   }
   mydate() {
-     this.selecteday = this.element.getDate() + '/'+ (+this.element.getMonth() + 1) + '/' + this.element.getFullYear();
+     this.selecteday = this.element.getDate() + '/'+ (+this.element.getMonth()) + '/' + this.element.getFullYear();
      this.dateChange.emit(this.selecteday);
     }
   nextmois(p){
       this.element =  new Date(this.element.getFullYear(), p ? this.element.getMonth()-1 :
-                      this.element.getMonth() + 1 , 1);
+                      this.element.getMonth() , 1);
       this.boucle();
   }
 
@@ -72,8 +72,7 @@ export class MydatepickerComponent implements OnInit {
 
 
  todate(e) {
-  const rect = e.getBoundingClientRect();
-  console.log(rect.top, rect.right, rect.bottom, rect.left);
+  console.log("ici =" , e);
 
   const validkey = ['0','1','2','3','4','5','6','7','8','9', '/'];
   if (validkey.indexOf(e.key) > -1) {

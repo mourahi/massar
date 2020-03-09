@@ -137,7 +137,9 @@ setValueToCheckAll(v){
 
  }
  inputchange(e, item, k) {
-   this.mydata.forEach(x => { if (Object.is(x, item)) { x[k] = e.target.value; }});
+   console.log("e,item,k",e,item,k);
+
+   this.mydata.forEach(x => { if (Object.is(x, item)) { x[k] = e.target == undefined ? e : e.target.value; }});
 }
 
 }

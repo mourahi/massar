@@ -22,7 +22,11 @@ export class SaisieelevesComponent implements OnInit {
     this.dataeleves.push(this.getNewLine());
   }
   save() {
-    if (this.service.filtreActive.classe.length < 2 ){this.service.filtreActive.classe = this.service.getlistNumClasses()[0].numero; }
+    console.log("this.dataeleves=",this.dataeleves);
+
+    if (this.service.filtreActive.classe.length < 2 ){
+      this.service.filtreActive.classe = this.service.getlistNumClasses()[0].numero;
+     }
     const nn = Math.max(...(this.service.ListEleves.map( m =>  +m.n)));
     const ra = this.service.ListEleves.filter( f => f.n as number == nn ).map( k => k.nmassar)[0];
     this.service.ListEleves = this.service.ListEleves.filter( j => j.cla != this.service.filtreActive.classe );
