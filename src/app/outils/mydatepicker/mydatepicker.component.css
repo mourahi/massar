@@ -1,38 +1,44 @@
 
-th,td, .bt{
-  width: 30px;
-  height: 30px;
+#tabledate th,#tabledate td, .bt{
+  width: 20px;
+  height: 15px;
   color: rgb(156, 156, 156);
 }
-th, td, .bt, .cbt{
+#tabledate th, #tabledate td, .bt, .cbt{
   text-align: center;
   text-align: center;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
-th{
+#tabledate th{
   color: black;
 }
-.now{
+
+#tabledate .now{
 color:rgb(63, 63, 63);
 background-color:#ffdb99;
 border-color:#ffb733;
 }
 
-.new{
+#tabledate .new{
   color: #333;
 }
-td:hover, .bt:hover, .cbt:hover{
+#tabledate td:hover,#tabledate .bt:hover,#tabledate .cbt:hover{
   background-color: lightgray;
   cursor: pointer;
 }
 
-.tabledate{
+#tabledate{
   position : absolute;
-  bottom: 30px;
   left: 0;
   background-color: white;
   border:2px solid transparent;
   z-index: 3000;
+}
+ table td, table th {
+  padding: 6px;
+  vertical-align: top;
+  border-top: 0px;
+  background-color: white;
 }

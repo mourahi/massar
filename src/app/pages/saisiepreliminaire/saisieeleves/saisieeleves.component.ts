@@ -19,7 +19,7 @@ export class SaisieelevesComponent implements OnInit {
     this.dataeleves = this.dataeleves.filter( f => f.addcheck != true && f.nmassar != '');
     this.save();
     this.service.setsuspender({etat: 'ok', message:'تمت الحذف بنجاح ....'});
-    this.dataeleves.push(this.getNewLine());
+    this.setNewLine();
   }
   save() {
     console.log("this.dataeleves=",this.dataeleves);
@@ -35,6 +35,8 @@ export class SaisieelevesComponent implements OnInit {
     const newmassar ='SF' + (+ra.replace( /^\D+/g, '') + 1);
     let messageErreur = '';
     let err = 0;
+    console.log("this.dataeleves saisie =",this.dataeleves);
+
     this.dataeleves.forEach( k => {
         if (k.addcheck) { k.addcheck = '' ; }
         if (k.dnaissance == '') { messageErreur =  'المرجو ملء تاريخ الازدياد' + '<br>'  ; err += 1; }
@@ -82,10 +84,14 @@ export class SaisieelevesComponent implements OnInit {
 
     const d = this.service.ListEleves.filter(i => i.cla == this.service.filtreActive.classe);
     this.dataeleves = JSON.parse(JSON.stringify(d));
-    this.dataeleves.push(this.getNewLine());
+    this.setNewLine();
+
 
   }
-  getNewLine() {
+  setNewLine() {
+    console.log('this.service.filtreActive.classe.split(\'-\')[0]=',this.service.filtreActive.classe.split('-')[0]);
+
+    if (this.service.filtreActive.classe.split('-')[0] == '1APG'){
     const titles =  [
       'n',
       'cla',
@@ -107,7 +113,8 @@ export class SaisieelevesComponent implements OnInit {
     titles.forEach( i => {
       r[i] = '';
     });
-    return r;
+    this.dataeleves.push(r);
+  }
   }
 
 }

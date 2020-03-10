@@ -30,6 +30,7 @@ export class SmarttableComponent implements OnInit {
    debut;
    fin;
    iTrSelected;
+   mydate;
    constructor() { }
    trclicked(i){
       this.iTrSelected = this.activeColorTr ? i : -1;
@@ -137,9 +138,17 @@ setValueToCheckAll(v){
 
  }
  inputchange(e, item, k) {
-   console.log("e,item,k",e,item,k);
 
-   this.mydata.forEach(x => { if (Object.is(x, item)) { x[k] = e.target == undefined ? e : e.target.value; }});
-}
+   this.mydata.forEach(x => { if (Object.is(x, item)) {
+     if (e.target == undefined) {
+       x[k] = e;
+       this.mydate = e;
+     } else {
+      x[k] = e.target.value;
+     }
+    }});
+   console.log("this.mydata =",this.mydata);
+
+  }
 
 }

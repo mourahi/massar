@@ -8,13 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class MydatepickerComponent implements OnInit {
   @Input() set data(data) {
     const r = data.indexOf('-') > -1 ? data.split('-') : data.split('/');
-    console.log("data, +r[2], +r[1], +r[0] ",data,r[2], r[1], r[0]);
-
-    this.element = data == '' ? new Date() : new Date(+r[2], +r[1], +r[0]);
-    this.selecteday = this.element.getDate() + '/'+ (+this.element.getMonth()) + '/' + this.element.getFullYear();
-
-
-
+    this.element = data == '' ? null : new Date(+r[2], +r[1], +r[0]);
+    this.selecteday = data == '' ? '' : this.element.getDate() + '/'+ (+this.element.getMonth()) + '/' + this.element.getFullYear();
   }
   @Output() dateChange = new EventEmitter();
 
@@ -60,6 +55,7 @@ export class MydatepickerComponent implements OnInit {
       this.element =  new Date(this.element.getFullYear(), p ? this.element.getMonth()-1 :
                       this.element.getMonth() , 1);
       this.boucle();
+      this.showit = true;
   }
 
   changedate(v){
@@ -72,8 +68,6 @@ export class MydatepickerComponent implements OnInit {
 
 
  todate(e) {
-  console.log("ici =" , e);
-
   const validkey = ['0','1','2','3','4','5','6','7','8','9', '/'];
   if (validkey.indexOf(e.key) > -1) {
   const r = (e.target.value as string).split('/').filter( i => i != '');

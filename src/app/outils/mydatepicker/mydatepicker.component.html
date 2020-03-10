@@ -1,12 +1,12 @@
-<div style="position: relative;">
-<input type="text" [(ngModel)]="selecteday"
+<div style="position: relative">
+<input type="text" [(ngModel)]="selecteday" style="font-size: 14px;"
  (keyup)="todate($event)" (focusout)="showit = false" (focus) ="showit = true"  >
-<table [hidden] = "!showit" class="tabledate" >
+<table [hidden] = "!showit" id="tabledate" >
   <thead>
-    <tr>
-      <th class="bt"> <a (click)="nextmois(true)"> << </a> </th>
+    <tr style="background-color: white;">
+      <th class="bt"> <a (click)="nextmois(true);showit = true"> << </a> </th>
       <th colspan="5" class="cbt"> {{ themonth }}  </th>
-      <th class="bt"> <a  (click)="nextmois(false)">  >> </a>  </th>
+      <th class="bt"> <a  (click)="nextmois(false);showit = true">  >> </a>  </th>
     </tr>
   <tr>
     <th>ح</th>
@@ -18,8 +18,10 @@
     <th>س</th>
   </tr>
 </thead>
-  <tr *ngFor="let item of dataview; let i = index" >
-    <td *ngFor="let v of item " [ngClass]="{ 'now': v.now == true, 'new' : v.new }" (mousedown)="changedate(v)" >
+  <tr *ngFor="let item of dataview; let i = index" style="background-color: white;">
+    <td *ngFor="let v of item "
+    [ngClass]="{ 'now': v.now == true, 'new' : v.new }"
+    (mousedown)="changedate(v)" >
      <a>{{v.j}} </a>
     </td>
   </tr>

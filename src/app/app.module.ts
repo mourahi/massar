@@ -83,7 +83,7 @@ import { MydatepickerComponent } from './outils/mydatepicker/mydatepicker.compon
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

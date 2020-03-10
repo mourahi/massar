@@ -11,7 +11,8 @@
         <i *ngIf="clickedkey[i] == undefined" class="fas fa-arrows-alt-v"></i>
         <span *ngIf = "key == 'addconcat' "> {{newKeysnames['addconcat'].name}}</span>
         <span *ngIf = "datakeys[key]['input'] != undefined "> {{ datakeys[key]['input'] }}</span>
-        <span *ngIf = "datakeys[key]['input'] == undefined && key !=='addconcat' "> {{datakeys[key]}}</span>
+        <span *ngIf = "datakeys[key]['select'] != undefined "> {{ datakeys[key]['select'] }}</span>
+        <span *ngIf = "datakeys[key]['select'] == undefined && datakeys[key]['input'] == undefined && key !=='addconcat' "> {{datakeys[key]}}</span>
       </span>
       <span *ngIf="key == 'addcheck'" >
         <input type="checkbox" id="chAll" (change)="checkall($event.target.checked)">
@@ -31,7 +32,13 @@
          <!--   <input *ngIf="datakeys[k]['type'] == 'date'"  type="date" [value]="item[k]" (change)="inputchange($event,item,k)" >-->
         <span *ngIf="datakeys[k]['type'] == 'date'" >
           <app-mydatepicker [data] = "item[k]" (dateChange)="inputchange($event,item,k)" ></app-mydatepicker>
+          <input  type="date" [value]="mydate" [hidden]="true">
         </span>
+        </span>
+        <span *ngSwitchCase="datakeys[k]['select'] != undefined" >
+          <select [name]="k" id="k" [(ngModel)]="item[k]">
+            <option  *ngFor="let g of datakeys[k].value" [selected]="g == item[k]" >{{g}}</option>
+          </select>
         </span>
         <span *ngSwitchCase="k =='addcheck'" >
           <input type="checkbox" (change)="item[k] = !item[k];checkone($event.target.checked)"

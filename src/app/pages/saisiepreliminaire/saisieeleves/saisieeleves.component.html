@@ -8,8 +8,7 @@
   <button  class="btn-primary m-1 mr-5 p-1 " (click)="save()" > حفظ <i class="fas fa-save" ></i></button>
   <button  class="btn-primary p-1 mb-2" (click)="delete()" > حذف <i class="far fa-trash-alt"></i></button>
 
-  <app-smarttable
-[data]="dataeleves" [maxview]="20"
+  <app-smarttable [data]="dataeleves" [maxview]="20"
 [newKeysnames]="{
   addcheck: 'addcheck',
   nmassar:'رقم التلميذ',
@@ -17,7 +16,7 @@
   prenom : {input: 'الاسم بالفرنسية'},
   arnom : {input: 'النسب بالعربية'},
   arprenom : {input: 'الاسم بالعربية'},
-  genre: {input: 'النوع'},
+  genre: {select: 'النوع', value:['ذكر','أنثى']},
   dnaissance: {input: 'تاريخ الازدياد', type:'date'},
   arlieunaissance : {input: 'مكان الازدياد بالعربية'},
   lieunaissance : {input: 'مكان الازدياد بالفرنسية'},
