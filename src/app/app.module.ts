@@ -40,6 +40,7 @@ import { PrelistelevesComponent } from './pages/saisiepreliminaire/listeleves/pr
 import { CorrectpositionComponent } from './pages/saisiepreliminaire/correctposition/correctposition.component';
 import { SaisieelevesComponent } from './pages/saisiepreliminaire/saisieeleves/saisieeleves.component';
 import { MydatepickerComponent } from './outils/mydatepicker/mydatepicker.component';
+import { ReceptioneleveComponent } from './pages/mobilite/receptioneleve/receptioneleve.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +78,8 @@ import { MydatepickerComponent } from './outils/mydatepicker/mydatepicker.compon
     PrelistelevesComponent,
     CorrectpositionComponent,
     SaisieelevesComponent,
-    MydatepickerComponent
+    MydatepickerComponent,
+    ReceptioneleveComponent
   ],
   imports: [
     BrowserModule,

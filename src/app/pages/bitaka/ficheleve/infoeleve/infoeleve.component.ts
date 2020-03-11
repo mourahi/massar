@@ -8,9 +8,12 @@ import { MysettingsService } from 'src/app/services/mysettings.service';
 })
 export class InfoeleveComponent implements OnInit {
   @Input() eleve;
+  countries: Array<string>;
   constructor(private service: MysettingsService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.countries = this.service.getCountries();
+  }
   save() {
     this.service.setsuspender({etat: 'ok', message: ''});
     this.service.ListEleves.forEach(element => {

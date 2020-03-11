@@ -12,6 +12,7 @@ import { FindeleveComponent } from './pages/bitaka/findeleve/findeleve.component
 import { PrelistelevesComponent } from './pages/saisiepreliminaire/listeleves/prelisteleves.component';
 import { CorrectpositionComponent } from './pages/saisiepreliminaire/correctposition/correctposition.component';
 import { SaisieelevesComponent } from './pages/saisiepreliminaire/saisieeleves/saisieeleves.component';
+import { ReceptioneleveComponent } from './pages/mobilite/receptioneleve/receptioneleve.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'findeleve', component: FindeleveComponent},
   {path: 'prelisteleve', component: PrelistelevesComponent},
   {path: 'correctposition/:n', component: CorrectpositionComponent},
-  {path: 'saisieeleves', component: SaisieelevesComponent}
+  {path: 'saisieeleves', component: SaisieelevesComponent},
+  {path: 'receptioneleve', component: ReceptioneleveComponent}
 
 ];
 

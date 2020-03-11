@@ -8,11 +8,13 @@ import { MysettingsService } from 'src/app/services/mysettings.service';
 })
 export class SaisieelevesComponent implements OnInit {
   dataeleves;
+  countries: Array<string>;
   constructor(private service: MysettingsService) { }
 
   ngOnInit(): void {
     this.service.filtreActive.niveau = this.service.myClasses[0].niveau;
     this.service.filtreActive.classe = this.service.getlistNumClasses()[0].numero;
+    this.countries = this.service.getCountries();
     this.showfilterclass();
   }
   delete() {

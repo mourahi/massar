@@ -1,0 +1,48 @@
+<p>receptioneleve works!</p>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-4">
+        <label for="myselect">الأكاديمية : </label>
+        <select class="form-control"  id='academies' (change)="settFiltreActive($event.target)" >
+          <option *ngFor="let academie of academies"  >{{academie.name}}</option>
+        </select>
+      </div>
+      <div class="col-4">
+        <label for="myselect">م.الاقليمية : </label>
+        <select class="form-control" id='directions' (change)="settFiltreActive($event.target)" >
+          <option *ngFor="let direction of academieactive.directions "  >{{direction}}</option>
+        </select>
+      </div>
+      <div class="col-4">
+        <label for="myselect">الجماعة : </label>
+        <select class="form-control" id='communes' (change)="settFiltreActive($event.target)" >
+          <option *ngFor="let commune of communes"  >{{commune}}</option>
+        </select>
+      </div>
+
+
+      <div class="col-4">
+        <label for="myselect">المؤسسة : </label>
+        <select class="form-control"  id='ecoles' (change)="settFiltreActive($event.target)" >
+          <option *ngFor="let ecole of ecoles"  >{{ecole}}</option>
+        </select>
+      </div>
+      <div class="col-4">
+        <label for="myselect">السلك : </label>
+        <select class="form-control" id='cycles' (change)="settFiltreActive($event.target)" >
+          <option *ngFor="let cycle of cycles"  >{{cycle}}</option>
+        </select>
+      </div>
+      <div class="col-4">
+        <label for="myselect">رقم التلميذ : </label>
+        <input type="text" class="form-control" id='nmassar'  >
+      </div>
+
+    <div class="mybtn col-12">
+      <button  class="btn-primary" style="float: left;height: 35px;margin-top: 28px;"
+      (click)="find()"> بحث <i class="fa fa-search" ></i></button>
+    </div>
+    </div>
+  </div>
+</div>
