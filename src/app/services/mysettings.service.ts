@@ -320,10 +320,12 @@ export class MysettingsService {
     }
 ];*/
   ListEleves;
+  ListAutreEleves;
   ListDeparts;
   ListSorties;
   ListScolarities;
   ListRedondances;
+  ListEtablis;
 
  constructor() {}
 

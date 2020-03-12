@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MysettingsService } from 'src/app/services/mysettings.service';
 
 @Component({
   selector: 'app-receptioneleve',
@@ -6,45 +7,74 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./receptioneleve.component.css']
 })
 export class ReceptioneleveComponent implements OnInit {
-  academies ;
-  academieactive;
-  communes;
-  ecoles;
   cycles;
-  constructor() { }
+  mylistEtablis;
+  myacademies;
+  mydirections;
+  mycommunes;
+  myecoles;
+  arraytab = ['لائحة المؤسسات', 'استقبال التلاميذ'];
+  dataeleves;
+
+  constructor(private service: MysettingsService) { }
 
   ngOnInit(): void {
-    this.communes = ['جماعة1','جماعة2','جماعة3','جماعة4'];
-    this.ecoles = ['مؤسسة تعليمية A','مؤسسة تعليمية B','مؤسسة تعليمية C','مؤسسة تعليمية D'];
-    this.cycles = ['الابتدائي'];
-    this.academies = [
-    {
-      name : 'مراكش-اسفي',
-      directions: ['مراكش', 'اسفي','اليوسفية','الصويرة','الحوز','قلعة السراغنة','شيشاوة','الرحامنة']
-    },
-    {
-      name : 'طنجة-تطوان-الحسيمة',
-      directions: ['الحسيمة', 'شفشاون','فحص-انحرة','العرائش','وزان','طنجة-اصيلا','تطوان','المضيق-الفنيدق']
-    },
-  ];
-    this.academieactive = this.academies[0];
+    this.myacademies = [...new Set(this.service.ListEtablis.map(i => i.region))];
+    this.mylistEtablis = this.service.ListEtablis.filter( j => j.region == this.myacademies[0]);
+    this.mydirections = [...new Set( this.mylistEtablis.filter( d => d.region == this.myacademies[0]).map( k => k.direction))];
+    this.cycles = ['ابتدائي'];
+    this.dataeleves = this.prepareDataeleves();
+  }
+  prepareDataeleves() {
+    const resultat = [];
+    [...new Set(this.service.ListAutreEleves.map(i => i.gresa))].forEach(k => {
+        const c = this.service.ListAutreEleves
+        .filter(j => j.gresa == k );
+        if( c.length > 1){
+          let da;
+          c.forEach(a => {
+            if (da == undefined) {
+              da = a.dtransfert.replace(/\//g, '-');
+            } else {
+              const aaa = a.dtransfert.replace(/\//g, '-');
+              da = (new Date(aaa)).getTime() > (new Date(da)).getTime() ? aaa : da;
+            }
+          });
+          resultat.push(Object.assign({gresa: k , nbrpartants: c.length, dtransfert: da}, this.getEtablisByGresa(k)));
+        } else {
+          resultat.push(Object.assign({gresa: k , nbrpartants: c.length,
+             dtransfert: c[0].dtransfert.replace(/\//g, '-') }, this.getEtablisByGresa(k)));
+        }
+    });
+
+    return resultat;
+
 
   }
-  settFiltreActive(t){
-    console.log("t=", t);
+  getEtablisByGresa(g) {
+    return this.service.ListEtablis.filter(i => i.gresa == g)[0];
+  }
+
+  indexTab(e){
+    console.log("e=",e);
+
+  }
+
+  settFiltreActive(t) {
+    this.service.setsuspender();
     switch (t.id) {
       case 'academies':
-        this.academieactive = this.academies.filter(i => i.name == t.value)[0];
+        this.mylistEtablis = this.service.ListEtablis.filter( j => j.region == t.value);
+        this.mydirections = [...new Set( this.mylistEtablis.filter( d => d.region == t.value).map( k => k.direction))];
         break;
       case 'directions':
-
+        this.mycommunes = [...new Set(this.mylistEtablis.filter( d => d.direction == t.value).map( k => k.commune))];
         break;
-      default:
-        break;
+      case 'communes':
+          this.myecoles = this.mylistEtablis.filter( d => d.commune == t.value).map( k => k.ecole);
     }
-    console.log('this.academieactive = ',this.academieactive);
-
   }
+
   find() {
 
   }

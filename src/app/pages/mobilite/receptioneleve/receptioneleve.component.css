@@ -1,0 +1,15 @@
+.card{
+  border:2px solid tranparent;
+  border-top:3px solid #f39c12;
+  padding-top:5px;
+}
+p{
+  margin-bottom:5px;
+}
+hr{
+  margin-top:0px;
+}
+label{
+  margin-top:10px;
+  font-weight: bold;
+}

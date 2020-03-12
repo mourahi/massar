@@ -56,6 +56,13 @@ export class MydataService {
       });
     return subject.asObservable();
   }
+  getEtablis(): Observable<any>  {
+    const subject = new Subject<string>();
+    this.http.get(this.getMyURL(7)).subscribe(x => {
+         subject.next(this.preparemyjson(x));
+      });
+    return subject.asObservable();
+  }
   private preparemyjson(d): any {
       let titenamesarray = new Array();
       let titlenames = {};

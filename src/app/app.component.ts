@@ -33,8 +33,15 @@ getListEleves() {
     const eleves = this.service.getMyData();
     eleves.subscribe(rre => {
       console.log('Listeleves chargé depuis internet re= ', rre);
-      this.settings.ListEleves = rre;
+      this.settings.ListAutreEleves = rre.filter( i => i.gresa != ''); // etudiants vide
+      this.settings.ListEleves = rre.filter( i => i.gresa == '');
       this.chargementOk = true;
+
+      const etablis = this.service.getEtablis();
+      etablis.subscribe( ree => {
+        console.log('ListEtablis chargé depuis internet re= ', ree);
+        this.settings.ListEtablis = ree;
+      });
       const departs = this.service.getMyDeparts();
       departs.subscribe( r => {
         console.log('ListDeparts chargé depuis internet re= ', r);

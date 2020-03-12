@@ -1,23 +1,26 @@
-<p>receptioneleve works!</p>
+<h4>استقبال التلاميذ </h4>
 <div class="card">
   <div class="card-body">
+    <p>معايير البحث</p><hr>
     <div class="row">
       <div class="col-4">
         <label for="myselect">الأكاديمية : </label>
         <select class="form-control"  id='academies' (change)="settFiltreActive($event.target)" >
-          <option *ngFor="let academie of academies"  >{{academie.name}}</option>
+          <option *ngFor="let academie of myacademies"  >{{academie}}</option>
         </select>
       </div>
       <div class="col-4">
         <label for="myselect">م.الاقليمية : </label>
         <select class="form-control" id='directions' (change)="settFiltreActive($event.target)" >
-          <option *ngFor="let direction of academieactive.directions "  >{{direction}}</option>
+          <option></option>
+          <option *ngFor="let direction of mydirections"  >{{direction}}</option>
         </select>
       </div>
       <div class="col-4">
         <label for="myselect">الجماعة : </label>
         <select class="form-control" id='communes' (change)="settFiltreActive($event.target)" >
-          <option *ngFor="let commune of communes"  >{{commune}}</option>
+          <option></option>
+          <option *ngFor="let commune of mycommunes"  >{{commune}}</option>
         </select>
       </div>
 
@@ -25,7 +28,8 @@
       <div class="col-4">
         <label for="myselect">المؤسسة : </label>
         <select class="form-control"  id='ecoles' (change)="settFiltreActive($event.target)" >
-          <option *ngFor="let ecole of ecoles"  >{{ecole}}</option>
+          <option></option>
+          <option *ngFor="let ecole of myecoles"  >{{ecole}}</option>
         </select>
       </div>
       <div class="col-4">
@@ -44,5 +48,22 @@
       (click)="find()"> بحث <i class="fa fa-search" ></i></button>
     </div>
     </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body" >
+<app-mytab [myarray]="arraytab"  (indexTab)="indexTab($event)" ></app-mytab>
+<app-smarttable [data]="dataeleves"
+[newKeysnames]="{
+  gresa: 'الرمز',
+  ecole: 'المؤسسة',
+  direction :'م.الاقليمية',
+  commune : 'الجماعة',
+  nbrpartants:'عدد المغادرين',
+  dtransfert: 'تاريخ اخر تحويل',
+  addlink: {name: 'عرض التحويلات', path: ''}
+  }"
+[maxview]="20"></app-smarttable>
   </div>
 </div>
