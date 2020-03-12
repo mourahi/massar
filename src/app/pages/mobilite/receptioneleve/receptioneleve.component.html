@@ -40,12 +40,12 @@
       </div>
       <div class="col-4">
         <label for="myselect">رقم التلميذ : </label>
-        <input type="text" class="form-control" id='nmassar'  >
+        <input type="text" class="form-control" id='nmassar' #nmassar  >
       </div>
 
     <div class="mybtn col-12">
       <button  class="btn-primary" style="float: left;height: 35px;margin-top: 28px;"
-      (click)="find()"> بحث <i class="fa fa-search" ></i></button>
+      (click)="find(nmassar.value)"> بحث <i class="fa fa-search" ></i></button>
     </div>
     </div>
   </div>
@@ -54,7 +54,7 @@
 <div class="card">
   <div class="card-body" >
 <app-mytab [myarray]="arraytab"  (indexTab)="indexTab($event)" ></app-mytab>
-<app-smarttable [data]="dataeleves"
+<app-smarttable [data]="dataview"
 [newKeysnames]="{
   gresa: 'الرمز',
   ecole: 'المؤسسة',
