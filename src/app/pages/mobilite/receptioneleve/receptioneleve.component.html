@@ -2,7 +2,7 @@
 <div class="card">
   <div class="card-body">
     <p>معايير البحث</p><hr>
-    <div class="row">
+    <div class="row" [hidden]="hidepage1">
       <div class="col-4">
         <label for="myselect">الأكاديمية : </label>
         <select class="form-control"  id='academies' (change)="settFiltreActive($event.target)" >
@@ -54,7 +54,38 @@
 <div class="card">
   <div class="card-body" >
 <app-mytab [myarray]="arraytab"  (indexTab)="indexTab($event)" ></app-mytab>
-<app-smarttable [data]="dataview"
+<div class="row" [hidden] = "!hidepage1">
+  <br>
+  <div style="margin-top:15px; margin-right:25px;font-weight:bold"> {{ 'المؤسسة الاصلية :' + ecole + '(' + gresa + ')' }}</div>
+  <div class="col-12"></div>
+  <div class="col-4">
+    <label for="myselect">نوع التعليم : </label>
+    <select class="form-control"  id='types' (change)="settFiltreActive($event.target)" >
+      <option *ngFor="let item of types"  >{{item}}</option>
+    </select>
+  </div>
+  <div class="col-4">
+    <label for="myselect">السلك : </label>
+    <select class="form-control" id='cycles' (change)="settFiltreActive($event.target)" >
+      <option *ngFor="let item of cycles"  >{{item}}</option>
+    </select>
+  </div>
+  <div class="col-12"></div>
+  <br>
+  <div class="col-4">
+    <label for="myselect">المستوى : </label>
+    <select class="form-control" id="niveau" #niveau  >
+      <option *ngFor="let n of listniveaux"  >{{n.niveau}}</option>
+    </select>
+  </div>
+  <div class="mybtn col-8">
+    <button  class="btn-primary" style="float: left;height: 35px;margin-top: 28px;"
+    (click)="findclasse(niveau.value)"> بحث <i class="fa fa-search" ></i></button>
+  </div>
+</div>
+
+  <div [hidden]="hidepage1">
+<app-smarttable [data]="dataview" (addlinkclicked)="addlinkclicked($event)"
 [newKeysnames]="{
   gresa: 'الرمز',
   ecole: 'المؤسسة',
@@ -65,5 +96,33 @@
   addlink: {name: 'عرض التحويلات', path: ''}
   }"
 [maxview]="20"></app-smarttable>
+  </div>
+  <div [hidden]="!hidepage1">
+    <app-smarttable [data]="datalistElevesActive"
+    [newKeysnames]="{
+      addcheck: 'addcheck',
+      nmassar: 'رقم التلميذ',
+      arprenom: 'الاسم',
+      arnom :'النسب',
+      dnaissance : 'تاريخ الازدياد',
+      genre:'الجنس',
+      cla: 'المستوى',
+      dtransfert: 'تاريخ التحويل',
+      typetransfert:'نوع التحويل'
+      }"
+    [maxview]="20"></app-smarttable>
+    <hr>
+    <div class="row">
+      <div class="col-4">
+        <label for="myselect">القسم : </label>
+        <select class="form-control" id='classe' (change)="findclasse($event.target.value)" >
+          <option value="*">*</option>
+          <option *ngFor="let c of listnumerosclasses" >{{c.numero}}</option>
+        </select>
+      </div>
+    </div>
+
+
+      </div>
   </div>
 </div>

@@ -19,6 +19,7 @@ export class SmarttableComponent implements OnInit {
          }
      }
  @Output() trSelected = new EventEmitter<any>();
+ @Output() addlinkclicked = new EventEmitter<any>();
    datakeys;
    clickedkey;
    numpage;
@@ -32,6 +33,9 @@ export class SmarttableComponent implements OnInit {
    iTrSelected;
    mydate;
    constructor() { }
+   linkClicked(e) {
+     this.addlinkclicked.emit(e);
+   }
    trclicked(i){
       this.iTrSelected = this.activeColorTr ? i : -1;
       this.trSelected.emit(this.dataviewed[i]);

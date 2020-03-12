@@ -49,7 +49,8 @@
         </span>
         <span *ngSwitchCase="k == 'addlink'" >
           <i class="fas fa-info-circle mr-1"></i>
-          <button type="button" class="btn btn-link" [routerLink]="['/'+ datakeys[k].path, item.n ]" > {{datakeys[k].name}}</button>
+          <button *ngIf="datakeys[k].path != ''"  type="button" class="btn btn-link" [routerLink]="['/'+ datakeys[k].path, item.n ]" > {{datakeys[k].name}}</button>
+          <button *ngIf="datakeys[k].path == ''"  type="button" class="btn btn-link" (click)="linkClicked(item)" > {{datakeys[k].name}}</button>
         </span>
         <span *ngSwitchDefault>{{item[k]}} </span>
 

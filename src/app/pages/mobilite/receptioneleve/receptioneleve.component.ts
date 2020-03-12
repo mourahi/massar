@@ -17,10 +17,19 @@ export class ReceptioneleveComponent implements OnInit {
   dataeleves;
   dataview;
   filtreactive = {region: '', direction: '', commune: '', ecole: ''};
-
+  hidepage1 = false;
+  types: string[];
+  listniveaux: any;
+  datalistElevesActive;
+  ecole;
+  gresa;
+  listnumerosclasses: { niveau: string; numero: string; }[];
   constructor(private service: MysettingsService) { }
 
   ngOnInit(): void {
+    this.hidepage1 = false;
+    this.types = this.service.types;
+    this.listniveaux = this.service.myClasses.slice();
     this.myacademies = [...new Set(this.service.ListEtablis.map(i => i.region))];
     this.mylistEtablis = this.service.ListEtablis.filter( j => j.region == this.myacademies[0]);
     this.mydirections = [...new Set( this.mylistEtablis.filter( d => d.region == this.myacademies[0]).map( k => k.direction))];
@@ -29,6 +38,29 @@ export class ReceptioneleveComponent implements OnInit {
     this.dataview = [];
     this.dataeleves = this.prepareDataeleves();
   }
+  addlinkclicked(e){
+
+    this.hidepage1 = true;
+    this.ecole = e.ecole;
+    this.gresa = e.gresa;
+   // this.preparationlistReception(this.datalistElevesActive[0].cla);
+
+  }
+  preparationlistReception(niveau) {
+    console.log("niveau", niveau);
+
+    this.datalistElevesActive = this.service.ListAutreEleves.filter(j => j.gresa == this.gresa);
+    this.datalistElevesActive.forEach(el => {
+        el.cla = this.service.getNiveauFormCla(el.cla);
+      });
+    this.listnumerosclasses = this.service.listNumClasses.filter(i => i.niveau == niveau).slice();
+  }
+
+  findclasse(v){
+    this.preparationlistReception(v);
+  }
+
+
   prepareDataeleves() {
     const resultat = [];
     [...new Set(this.service.ListAutreEleves.map(i => i.gresa))].forEach(k => {
