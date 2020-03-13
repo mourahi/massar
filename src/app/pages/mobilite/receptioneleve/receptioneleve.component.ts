@@ -39,39 +39,39 @@ export class ReceptioneleveComponent implements OnInit {
     this.dataview = [];
     this.dataeleves = this.prepareDataeleves();
   }
-  addlinkclicked(e){
 
+  addlinkclicked(e){
     this.hidepage1 = true;
     this.ecole = e.ecole;
     this.gresa = e.gresa;
-
   }
-  preparationlistReception(niveau) {
-    console.log("this.service.ListAutreEleves=",this.service.ListAutreEleves);
 
+  preparationlistReception(niveau) {
     this.datalistElevesActive = this.service.ListAutreEleves.filter(j =>{
       return j.gresa == this.gresa && this.service.getNiveauFormCla(j.cla) == niveau;
-    }
-
-    );
-
+    });
     this.datalistElevesActive.forEach(el => {
-        el['niveau'] = this.service.getNiveauFormCla(el.cla);
-      });
-    console.log('this.datalistElevesActive=',this.datalistElevesActive);
-
+        el.niveau = this.service.getNiveauFormCla(el.cla);
+    });
     this.listnumerosclasses = this.service.listNumClasses.filter(i => i.niveau == niveau).slice();
   }
 
   findclasse(v){
-
     this.preparationlistReception(v);
   }
-  reception(v){
+
+  reception(v, dr) {
     const elevesreceptioned = this.datalistElevesActive.filter( i => i.addcheck == true).map(j => j.nmassar);
     this.datalistElevesActive= this.datalistElevesActive.filter( i => i.addcheck != true);
     const neweleves = this.service.ListAutreEleves.filter(el => {
-      if (elevesreceptioned.indexOf(el.nmassar) > -1){
+      if (elevesreceptioned.indexOf(el.nmassar) > -1) {
+        this.service.ListDeparts.push({nmassar: el.nmassar,
+          ascolaire: '2019/2020',
+          ecoleorigine : this.gresa + '-' + this.ecole,
+          ddepart : el.dtransfert,
+          ecoledestination: this.service.ecole.gresa + '-' + this.service.ecole.name,
+          dreception: dr
+          });
         el.gresa = '';
         el.dtransfert = '';
         el.typetransfert = '';
@@ -81,16 +81,12 @@ export class ReceptioneleveComponent implements OnInit {
         return true;
       }
     });
-    this.service.ListAutreEleves = this.service.ListAutreEleves.filter(f => elevesreceptioned.indexOf(f.gresa) < 0);
-    console.log('neweleves=',neweleves);
-    console.log('this.service.ListEleves=',this.service.ListEleves);
-
+    this.service.ListAutreEleves = this.service.ListAutreEleves.filter( ff => ff.gresa != '' );
+    // update table Depart
 
   }
 
   prepareDataeleves() {
-    console.log("this.service.ListAutreEleves=",this.service.ListAutreEleves);
-
     const resultat = [];
     [...new Set(this.service.ListAutreEleves.map(i => i.gresa))].forEach(k => {
         const c = this.service.ListAutreEleves
@@ -111,18 +107,15 @@ export class ReceptioneleveComponent implements OnInit {
              dtransfert: c[0].dtransfert.replace(/\//g, '-') }, this.getEtablisByGresa(k)));
         }
     });
-
     return resultat;
-
-
   }
+
   getEtablisByGresa(g) {
     return this.service.ListEtablis.filter(i => i.gresa == g)[0];
   }
 
   indexTab(e){
     console.log("e=", e);
-
   }
 
   settFiltreActive(t) {
