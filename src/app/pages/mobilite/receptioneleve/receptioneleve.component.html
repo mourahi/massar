@@ -106,19 +106,27 @@
       arnom :'النسب',
       dnaissance : 'تاريخ الازدياد',
       genre:'الجنس',
-      cla: 'المستوى',
+      niveau: 'المستوى',
       dtransfert: 'تاريخ التحويل',
       typetransfert:'نوع التحويل'
       }"
     [maxview]="20"></app-smarttable>
     <hr>
     <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         <label for="myselect">القسم : </label>
-        <select class="form-control" id='classe' (change)="findclasse($event.target.value)" >
+        <select class="form-control" id='classe' #class >
           <option value="*">*</option>
           <option *ngFor="let c of listnumerosclasses" >{{c.numero}}</option>
         </select>
+      </div>
+      <div class="col-3 ">
+        <label for="myselect">تاريخ الاستقبال : </label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="mybtn col-3">
+        <button  class="btn-primary" style="float:right; height: 35px;margin-top: 38px;"
+        (click)="reception(class.value)"> إستقبال <i class="fa fa-save" ></i></button>
       </div>
     </div>
 
