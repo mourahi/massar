@@ -167,4 +167,36 @@
               </div>
               </div>
       </div>
+      <div class="card-body"  [ngClass] = "{'show': choixSelect == 6, 'hide': choixSelect != 6}">
+        <div class="row">
+          <div class="col-6">
+            <label for="myselect">نوع التعليم : </label>
+            <select class="form-control"  id='types' (change)="settFiltreActive($event.target)" >
+              <option *ngFor="let item of types"  >{{item}}</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <label for="myselect">السلك : </label>
+            <select class="form-control" id='cycles' (change)="settFiltreActive($event.target)" >
+              <option *ngFor="let item of cycles"  >{{item}}</option>
+            </select>
+          </div><br>
+          <div class="col-6">
+            <label for="myselect">المستوى : </label>
+            <select class="form-control" id="niveau" (change)="settFiltreActive($event.target)"  >
+              <option *ngFor="let n of listniveaux"  >{{n.niveau}}</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <label for="myselect">نوع التحويل : </label>
+            <select class="form-control" id='typetransfert' (change)="settFiltreActive($event.target)" >
+              <option value="*"></option>
+              <option *ngFor="let c of typetransferts" >{{c}}</option>
+            </select>
+          </div>
+          </div>
+        <div class="mybtn">
+          <button  class="btn-primary" (click)="btnclick('find')"> البحث <i class="fa fa-search" ></i></button>
+        </div>
+      </div>
 </div>

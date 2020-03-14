@@ -16,10 +16,11 @@ export class ChoixclassesComponent implements OnInit {
  listniveaux;
  types;
  cycles;
+ typetransferts;
   constructor(private service: MysettingsService) { }
 
   ngOnInit() {
-
+    this.typetransferts = ['الإنتقال الاشهادي', 'تحويل جماعي', 'تحويل فردي'];
     this.types = this.service.types;
     this.cycles = this.service.cycles;
     this.mylist = [{d: 'PDF'}, {d: 'XLS'}];
@@ -31,8 +32,7 @@ export class ChoixclassesComponent implements OnInit {
   }
 
   settFiltreActive(e) {
-    console.log("avant, class",e,this.service.filtreActive.classe);
-
+    e = e.value == '*' ? '' : e;
     switch (e.id) {
       case 'types':
 

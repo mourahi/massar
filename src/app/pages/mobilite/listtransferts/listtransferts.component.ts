@@ -38,13 +38,16 @@ export class ListtransfertsComponent implements OnInit {
         this.filterdata();
       }
   }
-  getDataEleve(nmassar){
+  getDataEleve(nmassar) {
     return this.service.ListEleves.filter(t => t.nmassar == nmassar)
       .map(m => ({arnom: m.arnom, arprenom: m.arprenom, cla: m.cla}))[0];
   }
 
 
   filterdata() {
+    const f = this.service.filtreActive['typetransfert'];
+    this.service.filtreActive['typetransfert'] = f == undefined ? '' : f;
+
     const id = this.service.getIdFromNameNiveau();
     let index = JSON.parse(JSON.stringify(this.data));
     index = index.filter(ii => {
@@ -54,13 +57,16 @@ export class ListtransfertsComponent implements OnInit {
       return (ii.cla as string).startsWith(id);
     }
     );
-    console.log('index = ', index);
 
-    const index0 = index.filter(r => r.dreception == ''  );
-    const index1 = index.filter(r => r.ecoledestination != '' &&
-                                r.ecoledestination.split('-')[0] != this.service.ecole.gresa);
-    console.log('index1=',index1);
+    const index0 = index.filter(r => {
+      return r.dreception == '' && r.typetransfert.startsWith(this.service.filtreActive['typetransfert']);
+    });
 
+    const index1 = index.filter(r => {
+      return r.ecoledestination != '' &&
+       r.ecoledestination.split('-')[0] != this.service.ecole.gresa &&
+       r.typetransfert.startsWith(this.service.filtreActive['typetransfert']);
+    });
     const index2 = index.filter(r => r.dreception != '' &&
                 r.ecoledestination != '' && r.ecoledestination.split('-')[0] == this.service.ecole.gresa);
     switch (this.index) {
