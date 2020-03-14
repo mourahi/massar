@@ -12,10 +12,11 @@
   </div>
   <div class="col-md-6 form-group">
       <label>تاريخ الالتحاق بالمؤسسة:</label>
-      <input class="form-control" type="text" type="date" #dsortie >
+      <app-mydatepicker [data]="dsortie" [myclass]="'form-control'" (dateChange)="dsortie = $event"></app-mydatepicker>
+
   </div>
   <div class="col-md-12">
-    <button  class="btn btn-primary" (click)="plus(operation.value, dsortie.value)" > <i class="fa fa-plus"></i></button>
+    <button  class="btn btn-primary" (click)="plus(operation.value)" > <i class="fa fa-plus"></i></button>
  </div>
 </div>
 <div class="clearfix mb-3"></div>

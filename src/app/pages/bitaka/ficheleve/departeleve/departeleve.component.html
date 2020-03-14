@@ -3,16 +3,17 @@
     <div class="card-header"></div>
     <div style="padding: 10px">
 <div class="row">
-  <div class="col-md-6 form-group">
+  <div class="col-6">
       <label>تاريخ المغادرة:</label>
-      <input class="form-control" type="text" type="date" #ddepart >
+      <app-mydatepicker [data]="ddepart" [myclass]="'form-control'" (dateChange)="ddepart = $event"></app-mydatepicker>
   </div>
-  <div class="col-md-6 form-group">
+  <div class="col-6">
       <label>تاريخ الالتحاق بالمؤسسة:</label>
-      <input  class="form-control"   type="date" #dreception >
+      <app-mydatepicker [data]="dreception" [myclass]="'form-control'" (dateChange)="dreception = $event"></app-mydatepicker>
   </div>
-  <div class="col-md-12">
-    <button  class="btn btn-primary" (click)="save(ddepart.value, dreception.value)" > حفظ شهادة المغادرة <i class="fa fa-save"></i></button>
+<div style="margin:10px;"></div>
+  <div class="col-12">
+    <button  class="btn btn-primary" (click)="save()" > حفظ شهادة المغادرة <i class="fa fa-save"></i></button>
    <button   class="btn btn-primary" (click) ="cancel()" [disabled]="departs.length == 0"> الغاء<i class="fa fa-times"></i></button>
  </div>
 </div>

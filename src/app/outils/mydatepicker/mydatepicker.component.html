@@ -1,5 +1,5 @@
 <div style="position: relative">
-<input type="text" [(ngModel)]="selecteday" style="font-size: 14px;"
+<input type="text" [(ngModel)]="selecteday" style="font-size: 14px;" [class]="myclass"
  (keyup)="todate($event)" (focusout)="showit = false" (focus) ="showit = true"  >
 <table [hidden] = "!showit" id="tabledate" >
   <thead>

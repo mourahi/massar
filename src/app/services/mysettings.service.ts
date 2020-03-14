@@ -500,7 +500,7 @@ switch (key) {
          {name: 'مسك النتائج', icon: '' ,  path: ''}
         ]},
         {name: 'الانتقالات', icon: 'fas fa-exchange-alt', extension: [
-         {name: 'لائحة التحويلات', icon: '' ,  path: ''},
+         {name: 'لائحة التحويلات', icon: '' ,  path: 'listtransferts'},
          {name: 'استقبال التلاميذ', icon: '' ,  path: 'receptioneleve'},
          {name: 'لائحة الوافدين', icon: '' ,  path: ''}
         ]},

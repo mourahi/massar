@@ -11,6 +11,7 @@ export class MydatepickerComponent implements OnInit {
     this.element = data == '' ? null : new Date(+r[2], +r[1], +r[0]);
     this.selecteday = data == '' ? '' : this.element.getDate() + '/'+ (+this.element.getMonth()) + '/' + this.element.getFullYear();
   }
+  @Input() myclass = '';
   @Output() dateChange = new EventEmitter();
 
   dataview = [];

@@ -18,16 +18,19 @@ export class ReceptioneleveComponent implements OnInit {
   dataview;
   filtreactive = {region: '', direction: '', commune: '', ecole: ''};
   hidepage1 = false;
+  hidebaspage2 = true;
   types: string[];
   listniveaux: any;
   datalistElevesActive;
   ecole;
   gresa;
+  mydatereception;
   listnumerosclasses: { niveau: string; numero: string; }[];
   constructor(private service: MysettingsService) { }
 
   ngOnInit(): void {
     this.hidepage1 = false;
+    this.mydatereception = new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear();
     this.types = this.service.types;
     this.listniveaux = this.service.myClasses.slice();
     this.myacademies = [...new Set(this.service.ListEtablis.map(i => i.region))];
@@ -57,10 +60,13 @@ export class ReceptioneleveComponent implements OnInit {
   }
 
   findclasse(v){
+    this.service.setsuspender();
     this.preparationlistReception(v);
+    this.hidebaspage2 = false;
   }
 
-  reception(v, dr) {
+  reception(v) {
+    this.service.setsuspender({etat: 'ok', message: 'تم الحفظ بنجاح'});
     const elevesreceptioned = this.datalistElevesActive.filter( i => i.addcheck == true).map(j => j.nmassar);
     this.datalistElevesActive= this.datalistElevesActive.filter( i => i.addcheck != true);
     const neweleves = this.service.ListAutreEleves.filter(el => {
@@ -68,12 +74,12 @@ export class ReceptioneleveComponent implements OnInit {
         this.service.ListDeparts.push({nmassar: el.nmassar,
           ascolaire: '2019/2020',
           ecoleorigine : this.gresa + '-' + this.ecole,
-          ddepart : el.dtransfert,
+          ddepart : el.ddepart,
           ecoledestination: this.service.ecole.gresa + '-' + this.service.ecole.name,
-          dreception: dr
+          dreception: this.mydatereception
           });
         el.gresa = '';
-        el.dtransfert = '';
+        el.ddepart = '';
         el.typetransfert = '';
         el.addcheck = false;
         el.cla = v == '*' ? el.cla.split('-')[0] : v;
@@ -95,16 +101,16 @@ export class ReceptioneleveComponent implements OnInit {
           let da;
           c.forEach(a => {
             if (da == undefined) {
-              da = a.dtransfert.replace(/\//g, '-');
+              da = a.ddepart.replace(/\//g, '-');
             } else {
-              const aaa = a.dtransfert.replace(/\//g, '-');
+              const aaa = a.ddepart.replace(/\//g, '-');
               da = (new Date(aaa)).getTime() > (new Date(da)).getTime() ? aaa : da;
             }
           });
-          resultat.push(Object.assign({gresa: k , nbrpartants: c.length, dtransfert: da}, this.getEtablisByGresa(k)));
+          resultat.push(Object.assign({gresa: k , nbrpartants: c.length, ddepart: da}, this.getEtablisByGresa(k)));
         } else {
           resultat.push(Object.assign({gresa: k , nbrpartants: c.length,
-             dtransfert: c[0].dtransfert.replace(/\//g, '-') }, this.getEtablisByGresa(k)));
+             ddepart: c[0].ddepart.replace(/\//g, '-') }, this.getEtablisByGresa(k)));
         }
     });
     return resultat;

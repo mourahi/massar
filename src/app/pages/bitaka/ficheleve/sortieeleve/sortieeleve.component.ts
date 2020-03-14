@@ -11,6 +11,7 @@ export class SortieeleveComponent implements OnInit {
   sorties;
   tmp;
   etat = 0;
+  dsortie = '';
   constructor(private service: MysettingsService) { }
 
   ngOnInit(): void {
@@ -39,7 +40,7 @@ export class SortieeleveComponent implements OnInit {
 
 
   }
-  plus(op, dop) {
+  plus(op) {
     this.etat = op;
     const opera = op == 2 ? 'إنقطاع' : 'اعادة الادماج';
     this.tmp = JSON.parse(JSON.stringify(this.sorties));
@@ -50,7 +51,7 @@ export class SortieeleveComponent implements OnInit {
       niveau : this.service.getNiveauFormCla(this.eleve.cla),
       cla: this.eleve.cla,
       operation: opera,
-      doperation: dop
+      doperation: this.dsortie
     });
     this.sorties = this.tmp;
 

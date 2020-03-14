@@ -10,6 +10,9 @@ import { isDate } from 'util';
 export class DeparteleveComponent implements OnInit {
   @Input() eleve;
   departs;
+  ddepart = '';
+  dreception = '';
+
   constructor(private service: MysettingsService) { }
 
   ngOnInit(): void {
@@ -24,19 +27,19 @@ export class DeparteleveComponent implements OnInit {
     });
   }
 
-  save(ddep, drecp) {
+  save() {
     let msgerreur = '';
-    if (ddep == undefined || ddep == '') {
+    if (this.ddepart == undefined || this.ddepart == '') {
       msgerreur = ' المرجو ملء تاريخ المغادرة' + '<br>';
     }
-    if (drecp == undefined || drecp == '') {
+    if (this.dreception == undefined || this.dreception == '') {
       msgerreur += ' المرجو ملء تاريخ الالتحاق بالمؤسسة';
     }
     if ( msgerreur != '') {
       this.service.setsuspender({etat: 'no', message : msgerreur});
       return false;
     }
-    if (drecp > ddep) {
+    if (this.dreception > this.ddepart) {
       this.service.setsuspender({etat: 'no', message : 'تاريخ المغادرة يجب ان يكون اكبر من تاريخ الالتحاق بالمؤسسة'});
       return false;
     }
@@ -46,7 +49,7 @@ export class DeparteleveComponent implements OnInit {
       nmassar: this.eleve.nmassar,
       ascolaire: this.service.filtreActive.ascolaire,
       ecoleorigine: this.service.ecole.gresa + '-' + this.service.ecole.name ,
-      ddepart: ddep,
+      ddepart: this.ddepart,
       ecoledestination: '',
       dreception: ''
     });

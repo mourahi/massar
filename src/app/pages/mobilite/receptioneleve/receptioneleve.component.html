@@ -83,7 +83,7 @@
     (click)="findclasse(niveau.value)"> بحث <i class="fa fa-search" ></i></button>
   </div>
 </div>
-
+<hr><br>
   <div [hidden]="hidepage1">
 <app-smarttable [data]="dataview" (addlinkclicked)="addlinkclicked($event)"
 [newKeysnames]="{
@@ -92,7 +92,7 @@
   direction :'م.الاقليمية',
   commune : 'الجماعة',
   nbrpartants:'عدد المغادرين',
-  dtransfert: 'تاريخ اخر تحويل',
+  ddepart: 'تاريخ اخر تحويل',
   addlink: {name: 'عرض التحويلات', path: ''}
   }"
 [maxview]="20"></app-smarttable>
@@ -107,12 +107,12 @@
       dnaissance : 'تاريخ الازدياد',
       genre:'الجنس',
       niveau: 'المستوى',
-      dtransfert: 'تاريخ التحويل',
+      ddepart: 'تاريخ التحويل',
       typetransfert:'نوع التحويل'
       }"
     [maxview]="20"></app-smarttable>
     <hr>
-    <div class="row">
+    <div class="row" [hidden]="hidebaspage2">
       <div class="col-3">
         <label for="myselect">القسم : </label>
         <select class="form-control" id='classe' #class >
@@ -122,11 +122,12 @@
       </div>
       <div class="col-3 ">
         <label for="myselect">تاريخ الاستقبال : </label>
-        <input type="text" class="form-control" #dreception>
+        <app-mydatepicker  [data] = "mydatereception" (dateChange)="mydatereception= $event"
+        [myclass]="'form-control'"></app-mydatepicker>
       </div>
       <div class="mybtn col-3">
         <button  class="btn-primary" style="float:right; height: 35px;margin-top: 38px;"
-        (click)="reception(class.value, dreception.value)"> إستقبال <i class="fa fa-save" ></i></button>
+        (click)="reception(class.value)"> إستقبال <i class="fa fa-save" ></i></button>
       </div>
     </div>
 

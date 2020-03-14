@@ -13,6 +13,7 @@ import { PrelistelevesComponent } from './pages/saisiepreliminaire/listeleves/pr
 import { CorrectpositionComponent } from './pages/saisiepreliminaire/correctposition/correctposition.component';
 import { SaisieelevesComponent } from './pages/saisiepreliminaire/saisieeleves/saisieeleves.component';
 import { ReceptioneleveComponent } from './pages/mobilite/receptioneleve/receptioneleve.component';
+import { ListtransfertsComponent } from './pages/mobilite/listtransferts/listtransferts.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path: 'prelisteleve', component: PrelistelevesComponent},
   {path: 'correctposition/:n', component: CorrectpositionComponent},
   {path: 'saisieeleves', component: SaisieelevesComponent},
-  {path: 'receptioneleve', component: ReceptioneleveComponent}
+  {path: 'receptioneleve', component: ReceptioneleveComponent},
+  {path: 'listtransferts', component: ListtransfertsComponent}
 
 ];
 
