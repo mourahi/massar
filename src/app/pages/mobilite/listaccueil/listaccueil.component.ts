@@ -28,7 +28,9 @@ export class ListaccueilComponent implements OnInit {
 
   getDataEleve(nmassar) {
     return this.service.ListEleves.filter(t => t.nmassar == nmassar)
-      .map(m => ({arnom: m.arnom, arprenom: m.arprenom, cla: m.cla}))[0];
+      .map(m => ({arnom: m.arnom, arprenom: m.arprenom,
+         cla: m.cla, genre: m.genre, dnaissance: m.dnaissance,
+         myniveau: this.service.getNiveauFormCla(m.cla)}))[0];
   }
 
 

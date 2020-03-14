@@ -12,12 +12,15 @@
 [newKeysnames]="{
   addcheck:'addcheck',
   nmassar: 'رقم التلميذ',
-  arnom : 'النسب بالعربية',
-  arprenom:'الاسم بالعربية',
+  addconcat: {name: 'الاسم الكامل', concat: ['arnom', 'arprenom']},
+  dnaissance: 'تاريخ الازدياد',
+  genre : 'الجنس',
+  myniveau : 'المستوى',
+  ecoleorigine : 'المؤسسة الاصلية',
   ddepart: 'تاريخ التحويل',
   typetransfert: 'نوع التحويل',
-  ecoleorigine : 'المؤسسة الاصلية',
-  ecoledestination : 'مؤسسة الاستقبال'
+  dreception : 'تاريخ الاستقبال'
+
   }"
 [maxview]="20"></app-smarttable>
     </div>
