@@ -17,10 +17,24 @@ export class ChoixclassesComponent implements OnInit {
  types;
  cycles;
  typetransferts;
+ ecoleaccueil;
   constructor(private service: MysettingsService) { }
 
   ngOnInit() {
     this.typetransferts = ['الإنتقال الاشهادي', 'تحويل جماعي', 'تحويل فردي'];
+    let da = this.service.ListDeparts.filter(f => {
+      f.ecoleorigine = f.ecoleorigine == '' ?
+          this.service.ecole.gresa + '-' + this.service.ecole.name : f.ecoleorigine;
+      return f.ecoledestination.split('-')[0] == this.service.ecole.gresa;
+    } ).map(i => i.ecoleorigine);
+
+    da = [...new Set(da)];
+    this.ecoleaccueil = [];
+    da.forEach(el => {
+      const r = el.split('-');
+      this.ecoleaccueil.push({ecole: r[1], gresa: r[0]});
+    });
+
     this.types = this.service.types;
     this.cycles = this.service.cycles;
     this.mylist = [{d: 'PDF'}, {d: 'XLS'}];

@@ -1,0 +1,25 @@
+<p>listaccueil works!</p>
+<h4>لائحة التحويلات  </h4>
+<app-choixclasses [choixSelect]="7" (save)="showfilterclass($event)"></app-choixclasses>
+
+<!-- ICI TABS-->
+<div [hidden]="showtable">
+  <div class="card">
+    <div class="card-body" >
+
+
+<app-smarttable [data]="dataeleves"
+[newKeysnames]="{
+  addcheck:'addcheck',
+  nmassar: 'رقم التلميذ',
+  arnom : 'النسب بالعربية',
+  arprenom:'الاسم بالعربية',
+  ddepart: 'تاريخ التحويل',
+  typetransfert: 'نوع التحويل',
+  ecoleorigine : 'المؤسسة الاصلية',
+  ecoledestination : 'مؤسسة الاستقبال'
+  }"
+[maxview]="20"></app-smarttable>
+    </div>
+  </div>
+</div>

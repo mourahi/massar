@@ -502,7 +502,7 @@ switch (key) {
         {name: 'الانتقالات', icon: 'fas fa-exchange-alt', extension: [
          {name: 'لائحة التحويلات', icon: '' ,  path: 'listtransferts'},
          {name: 'استقبال التلاميذ', icon: '' ,  path: 'receptioneleve'},
-         {name: 'لائحة الوافدين', icon: '' ,  path: ''}
+         {name: 'لائحة الوافدين', icon: '' ,  path: 'listaccueil'}
         ]},
         {name: 'توزيع التلاميذ و اعادة التسجيل', icon: 'fa-edit', extension: [
          {name: 'توزيع التلاميذ على الاقسام', icon: '' ,  path: 'distributioneleves'},

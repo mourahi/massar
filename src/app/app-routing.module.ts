@@ -14,6 +14,7 @@ import { CorrectpositionComponent } from './pages/saisiepreliminaire/correctposi
 import { SaisieelevesComponent } from './pages/saisiepreliminaire/saisieeleves/saisieeleves.component';
 import { ReceptioneleveComponent } from './pages/mobilite/receptioneleve/receptioneleve.component';
 import { ListtransfertsComponent } from './pages/mobilite/listtransferts/listtransferts.component';
+import { ListaccueilComponent } from './pages/mobilite/listaccueil/listaccueil.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path: 'correctposition/:n', component: CorrectpositionComponent},
   {path: 'saisieeleves', component: SaisieelevesComponent},
   {path: 'receptioneleve', component: ReceptioneleveComponent},
-  {path: 'listtransferts', component: ListtransfertsComponent}
+  {path: 'listtransferts', component: ListtransfertsComponent},
+  {path: 'listaccueil', component: ListaccueilComponent}
 
 ];
 
